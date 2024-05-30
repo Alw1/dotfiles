@@ -1,10 +1,10 @@
 # Ignore all files in the .config folder
-*
+/*
 
 # Except these specific files
 !.gitignore
-!sway/
-!mako/
-!waybar/
-!kitty/
-!swaylock/
+!/sway/
+!/mako/
+!/waybar/
+!/kitty/
+!/swaylock/

@@ -1,0 +1,92 @@
+//Note: Some icons may not load if fonts are not installed
+
+{
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 35, // Waybar height (to be removed for auto height)   
+    "spacing": 3, // Gaps between modules (4px)
+    "modules-left": ["custom/icon","sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/suspend", "custom/poweroff"],
+
+    "custom/icon": {
+	    "format" : "<span>    </span>", 
+	    "tooltip" : false,
+	    "align" : "center"
+    },
+    "sway/workspaces": {
+  	"disable-scroll": true,	
+  	"all-outputs": true,
+  	"format": "{name}",
+    },   
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    }, 
+    "custom/poweroff": {
+        "format": "",
+        "on-click": "swaymsg exec systemctl poweroff",
+    },
+    "custom/suspend": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; systemctl suspend) & disown'",
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+    },
+    "tray": {
+        "show-passive-items" : true,
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%m.%d.%Y  |  %I:%M %p}",
+        "interval": 60
+    },
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 1,
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 1,
+        "format": "RAM {}%"
+    },
+    "backlight": { 
+        "format": "{percent}% {icon}",
+        "format-icons": ["",""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },    
+    "pulseaudio": {
+        "format": "{volume}% {icon}", 
+        "format-bluetooth": "{volume}% {icon}", 
+        "format-bluetooth-muted": "{icon}",
+        "format-muted": "MUTED ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+	"max-volume": 100,
+    }   
+}
