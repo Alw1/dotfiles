@@ -55,7 +55,7 @@ output * bg ~/Pictures/wallpaper.jpg fill
 exec swayidle -w \
           timeout 600 'swaylock -f -c 000000' \
           timeout 1000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -e -i ~/Pictures/wallpaper.jpg -s fill'
+          before-sleep 'swaylock -f -e -i ~/Pictures/lock.png -s fill'
 
 ### Input configuration
 #
@@ -76,7 +76,7 @@ exec swayidle -w \
 # Basics:
 #
     #lock screen with a bg image
-    bindsym $mod+x exec swaylock -f -e -i ~/Pictures/wallpaper.jpg -s fill
+    bindsym $mod+x exec swaylock -f -e -i ~/Pictures/lock.png -s fill
 
     # Start a terminal
     bindsym $mod+Return exec swaymsg "exec $term --single-instance"
@@ -259,8 +259,8 @@ bar {
 }
 
 #Bindings for screenshotting the whole screen or a selection
-bindsym Print exec grim ~/Pictures/screenshot.png; exec notify-send "Screenshot saved"
-bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png; exec notify-send "Screenshot saved"
+bindsym Print exec ~/.config/sway/screenshot.sh window
+bindsym $mod+Print  exec ~/.config/sway/screenshot.sh selection
 
 #smarter splitting cause im lazy :3
 for_window [app_id="kitty"] split toggle ; opacity .9
@@ -283,11 +283,20 @@ set $gtk-icons 'Gruvbox'
 set $gtk-font  'Intel One Mono'
 
 exec_always {
-  gsettings set $gnome-schema icon-theme $gtk-icons 
-  gsettings set $gnome-schema gtk-theme  $gtk-theme
-  gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+#  gsettings set $gnome-schema icon-theme $gtk-icons 
+#  gsettings set $gnome-schema gtk-theme  $gtk-theme
+#  gsettings set $gnome-schema $gtk-font 
+  gsettings set $gnome-schema color-scheme prefer-dark
 }
 
 # Workspace swipe gestures
 bindgesture swipe:right workspace next
 bindgesture swipe:left workspace prev
+
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+
+# Shift entire content of workspace to adjacent workspace
+#bindsym $mod+greater move workspace to output right
+#bindsym $mod+less move workspace to output left
+

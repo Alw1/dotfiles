@@ -1,23 +1,34 @@
-//Note: Some icons may not load if fonts are not installed
-
 {
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)   
-    "spacing": 3, // Gaps between modules (4px)
-    "modules-left": ["custom/icon","sway/workspaces", "sway/mode"],
+    "position": "top", 
+    "height": 38, 
+    "spacing": 5, 
+    "modules-left": ["custom/icon", "sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/suspend", "custom/poweroff"],
-
+	
     "custom/icon": {
 	    "format" : "<span>    </span>", 
 	    "tooltip" : false,
 	    "align" : "center"
     },
+    "sway/window": {
+    "format": "{app_id}",
+    "icon" : true,
+    "max-length": 50,
+    "icon-size": 20
+    },    
     "sway/workspaces": {
-  	"disable-scroll": true,	
-  	"all-outputs": true,
-  	"format": "{name}",
-    },   
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}: {icon}  ",
+        "format-icons": {
+            "1": "web 󰈹",
+			"2" : "discord ",
+            "3": "music ",
+            "4": "term ",
+            "5": "code ",
+        }
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     }, 
@@ -34,7 +45,7 @@
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        },
+        }
     },
     "tray": {
         "show-passive-items" : true,
@@ -67,7 +78,6 @@
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },    
     "pulseaudio": {
@@ -87,6 +97,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-	"max-volume": 100,
+	"max-volume": 100
     }   
 }
