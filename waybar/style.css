@@ -20,23 +20,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-/*window#waybar.termite {
-    background-color: #3F3F3F;
-}
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}*/
-
 #workspaces button {
     padding: 0 10px;
     background-color: #282828;
@@ -124,7 +107,7 @@ window#waybar.chromium {
         color: #df3f71;
     }
 }
-
+/*
 #battery.critical:not(.charging) {
     background-color: #282828;
     color: #d3869b;
@@ -134,7 +117,7 @@ window#waybar.chromium {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-
+*/
 label:focus {
     background-color: #000000;
 }

@@ -55,7 +55,7 @@ output * bg ~/Pictures/wallpaper.jpg fill
 exec swayidle -w \
           timeout 600 'swaylock -f -c 000000' \
           timeout 1000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -e -i ~/Pictures/lock.png -s fill'
+          before-sleep 'swaylock --config swaylock.conf -f -e -i ~/Pictures/lock.png -s fill'
 
 ### Input configuration
 #
@@ -76,7 +76,7 @@ exec swayidle -w \
 # Basics:
 #
     #lock screen with a bg image
-    bindsym $mod+x exec swaylock -f -e -i ~/Pictures/lock.png -s fill
+    bindsym $mod+x exec swaylock -C swaylock.conf -f -e -i ~/Pictures/lock.png -s fill
 
     # Start a terminal
     bindsym $mod+Return exec swaymsg "exec $term --single-instance"
