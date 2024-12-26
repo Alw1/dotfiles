@@ -1,4 +1,6 @@
+/* */
 *{
+
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Intel One Mono, "Font Awesome 5 Free";
     font-size: 18;
@@ -10,8 +12,8 @@ window#waybar {
 }
 
 #custom-icon {
-	font-size: 25;
-	color: #95c4de;
+	font-size: 30;
+	color: #76aef2;
 }
 
 

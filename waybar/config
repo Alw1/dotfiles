@@ -5,9 +5,9 @@
     "modules-left": ["custom/icon", "sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/suspend", "custom/poweroff"],
-	
+
     "custom/icon": {
-	    "format" : "<span>    </span>", 
+	    "format" : "<span>  󱄅  </span>", 
 	    "tooltip" : false,
 	    "align" : "center"
     },
@@ -22,11 +22,12 @@
         "all-outputs": false,
         "format": "{name}: {icon}  ",
         "format-icons": {
-            "1": "web 󰈹",
+            "1" : "web 󰈹",
 			"2" : "discord ",
-            "3": "music ",
-            "4": "term ",
-            "5": "code ",
+            "3" : "music ",
+            "4" : "term ",
+            "5" : "code ",
+			"6" : "files "
         }
     },
     "sway/mode": {

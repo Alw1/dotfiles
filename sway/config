@@ -1,8 +1,6 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# ░█▀▀░█░█░█▀█░█░█
+# ░▀▀█░█▄█░█▀█░░█░
+# ░▀▀▀░▀░▀░▀░▀░░▀░
 
 # setup for obs
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -10,10 +8,10 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 #startup network manager & bluetooth apps for waybar tray icons
 exec nm-applet --indicator
-exec blueman-applet
+# exec blueman-applet
 
 #startup notification manager
-exec mako
+#exec dunst -config ~/.config/dunst/gruvbox-material-hard-dark.conf
 
 xwayland enable
 
@@ -53,30 +51,16 @@ output * bg ~/Pictures/wallpaper.jpg fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-          timeout 600 'swaylock -f -c 000000' \
-          timeout 1000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock --config swaylock.conf -f -e -i ~/Pictures/lock.png -s fill'
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for morel information about this section.
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -e -i ~/Pictures/wallpaper.jpg -s fill'
 
 ### Key bindings
 #
 # Basics:
 #
     #lock screen with a bg image
-    bindsym $mod+x exec swaylock -C swaylock.conf -f -e -i ~/Pictures/lock.png -s fill
+    bindsym $mod+x exec swaylock -f -e -i ~/Pictures/wallpaper.jpg -s fill
 
     # Start a terminal
     bindsym $mod+Return exec swaymsg "exec $term --single-instance"
@@ -180,7 +164,7 @@ exec swayidle -w \
     # We just use 1-10 as the default.
 
     # make gaps between windows
-    gaps outer 5
+    gaps outer 2
     gaps inner 5
 #
 # Layout stuff:
@@ -259,8 +243,8 @@ bar {
 }
 
 #Bindings for screenshotting the whole screen or a selection
-bindsym Print exec ~/.config/sway/screenshot.sh window
-bindsym $mod+Print  exec ~/.config/sway/screenshot.sh selection
+bindsym Print exec grim ~/Pictures/screenshot.png; exec notify-send "Screenshot saved"
+bindsym $mod+Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png; exec notify-send "Screenshot saved"
 
 #smarter splitting cause im lazy :3
 for_window [app_id="kitty"] split toggle ; opacity .9
@@ -270,33 +254,11 @@ focus_follows_mouse no
 # move cursor to focused window on switch
 mouse_warping container
 
-
-
 #set system font
 font Intel One Mono 10
 
-#This bit is a bit fucked, fix later
-#Set GTK themes (Themes must be in the .themes directory for this to work)
-set $gnome-schema org.gnome.desktop.interface
-set $gtk-theme 'Gruvbox'
-set $gtk-icons 'Gruvbox'
-set $gtk-font  'Intel One Mono'
-
-exec_always {
-#  gsettings set $gnome-schema icon-theme $gtk-icons 
-#  gsettings set $gnome-schema gtk-theme  $gtk-theme
-#  gsettings set $gnome-schema $gtk-font 
-  gsettings set $gnome-schema color-scheme prefer-dark
-}
-
-# Workspace swipe gestures
-bindgesture swipe:right workspace next
-bindgesture swipe:left workspace prev
-
-bindsym $mod+Left workspace prev
+#arrow keys to switch to next open workspace
 bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
 
-# Shift entire content of workspace to adjacent workspace
-#bindsym $mod+greater move workspace to output right
-#bindsym $mod+less move workspace to output left
 
