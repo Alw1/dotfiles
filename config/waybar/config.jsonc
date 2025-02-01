@@ -1,0 +1,100 @@
+{
+    "position": "top", 
+    "height": 35, 
+    "spacing": 5, 
+    "modules-left": ["custom/icon", "hyprland/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/separator"],
+
+    "custom/icon": {
+	    "format" : "<span>  󱄅  </span>", 
+	    "tooltip" : false,
+	    "align" : "center"
+    },
+    "sway/window": {
+		"format": "{app_id}",
+		"icon" : true,
+		"max-length": 50,
+		"icon-size": 20
+    },    
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}: {icon} ",
+        "format-icons": {
+            "1": "web 󰈹",
+			"2" : "discord ",
+            "3": "music ",
+            "4": "term ",
+            "5": "code ",
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    }, 
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "show-passive-items" : true,
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%m.%d.%Y  |  %I:%M %p}",
+        "interval": 60,
+		"tooltip" : false
+    },
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 10,
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 10,
+        "format": "RAM {percentage}%"
+    },
+    "backlight": { 
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "󰃟",""] 
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󱐋",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+		"interval" : 10,
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}", 
+        "format-bluetooth": "{volume}% {icon}", 
+        "format-bluetooth-muted": "{icon}",
+        "format-muted": "MUTED ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", "", ""]
+        },
+        "on-click": "pavucontrol",
+	"max-volume": 100
+    }, 
+	"custom/separator": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	},
+}
