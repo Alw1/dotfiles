@@ -1,6 +1,8 @@
 *{
     font-family: "Intel One Mono", "Font Awesome 5 Free";
-    font-size: 18;
+    font-size: 15;
+	padding: 0 5px;
+
 }
 
 window#waybar {
@@ -18,7 +20,7 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 6px;
     background-color: #1d2021;
     color: #c8c093;
     /* Use box-shadow instead of border so the text isn't offset */
@@ -168,4 +170,3 @@ label:focus {
 	background-color: #1d2021;
 	color: #957FB8;
 }
-

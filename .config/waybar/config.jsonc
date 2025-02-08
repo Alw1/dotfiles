@@ -1,10 +1,9 @@
 {
     "position": "top", 
-    "height": 38, 
     "spacing": 5, 
-    "modules-left": ["custom/icon", "sway/workspaces", "sway/mode", "sway/window"],
+    "modules-left": ["custom/icon", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/suspend", "custom/poweroff"],
+    "modules-right": ["tray", "cpu", "memory", "backlight","pulseaudio","battery", "idle_inhibitor", "custom/separator"],
 
     "custom/icon": {
 	    "format" : "<span>  󱄅  </span>", 
@@ -12,35 +11,26 @@
 	    "align" : "center"
     },
     "sway/window": {
-    "format": "{app_id}",
-    "icon" : true,
-    "max-length": 50,
-    "icon-size": 20
+		"format": "{app_id}",
+		"icon" : true,
+		"max-length": 50,
+		"icon-size": 20
     },    
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "format": "{name}: {icon}  ",
+        "format": "{name}: {icon} ",
         "format-icons": {
-            "1" : "web 󰈹",
+            "1": "web 󰈹",
 			"2" : "discord ",
-            "3" : "music ",
-            "4" : "term ",
-            "5" : "code ",
-			"6" : "files "
+            "3": "music ",
+            "4": "term ",
+            "5": "code ",
         }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     }, 
-    "custom/poweroff": {
-        "format": "",
-        "on-click": "swaymsg exec systemctl poweroff",
-    },
-    "custom/suspend": {
-        "format": "",
-        "on-click": "sh -c '(sleep 0.5s; systemctl suspend) & disown'",
-    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -55,32 +45,33 @@
     },
     "clock": {
         "format": "{:%m.%d.%Y  |  %I:%M %p}",
-        "interval": 60
+        "interval": 60,
+		"tooltip" : false
     },
     "cpu": {
         "format": "CPU {usage}%",
-        "interval": 1,
+        "interval": 10,
         "tooltip": false
     },
     "memory": {
-        "interval": 1,
-        "format": "RAM {}%"
+        "interval": 10,
+        "format": "RAM {percentage}%"
     },
     "backlight": { 
         "format": "{percent}% {icon}",
-        "format-icons": ["",""]
+        "format-icons": ["", "󰃟",""] 
     },
     "battery": {
         "states": {
-            "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󱐋",
         "format-plugged": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
-    },    
+        "format-icons": ["", "", "", "", ""],
+		"interval" : 10,
+    },
     "pulseaudio": {
         "format": "{volume}% {icon}", 
         "format-bluetooth": "{volume}% {icon}", 
@@ -95,9 +86,14 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", "", ""]
         },
         "on-click": "pavucontrol",
 	"max-volume": 100
-    }   
+    }, 
+	"custom/separator": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	},
 }
