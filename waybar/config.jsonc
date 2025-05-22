@@ -1,0 +1,111 @@
+{
+	"position": "top",
+	"spacing": 5,
+	"modules-left": [
+		"custom/icon",
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"tray",
+		"cpu",
+		"memory",
+		"network",
+		"pulseaudio",
+		"battery",
+		"idle_inhibitor"
+	],
+	"network": {
+		"format-wifi": "{signalStrength}%  ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{essid}",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{essid}  "
+	},
+	"custom/icon": {
+		"format": "<span> 󱄅 </span>",
+		"tooltip": false,
+		"align": "center"
+	},
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}: {icon} ",
+		"format-icons": {
+			"1": "web 󰈹",
+			"2": "discord ",
+			"3": "music ",
+			"4": "term ",
+			"5": "code "
+		}
+	},
+	"idle_inhibitor": {
+		"format": "{icon}  ",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"tray": {
+		"show-passive-items": true,
+		"icon-size": 20,
+		"spacing": 10
+	},
+	"clock": {
+		"format": "{:%I:%M %p | %a, %b %d}",
+		"tooltip": false
+	},
+	"cpu": {
+		"format": "CPU {usage}%",
+		"interval": 10,
+		"tooltip": false
+	},
+	"memory": {
+		"interval": 10,
+		"format": "RAM {percentage}%"
+	},
+	"battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% 󱐋",
+		"format-plugged": "{capacity}% ",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"interval": 10
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon}",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-bluetooth-muted": "{icon}",
+		"format-muted": "MUTED ",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol",
+		"max-volume": 100
+	}
+}

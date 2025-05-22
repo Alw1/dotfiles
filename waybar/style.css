@@ -1,8 +1,9 @@
+@import "colors.css";
+
 *{
     font-family: "Intel One Mono", "Font Awesome 5 Free";
     font-size: 15;
-	padding: 0 5px;
-
+	/* padding: 0 5px; */
 }
 
 window#waybar {
@@ -12,7 +13,7 @@ window#waybar {
 
 #custom-icon {
 	font-size: 35;
-	color: #72a7bc;
+    color: #7e9cd8;
 }
 
 window#waybar.hidden {
@@ -20,7 +21,7 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 6px;
+    padding: 0 10px;
     background-color: #1d2021;
     color: #c8c093;
     /* Use box-shadow instead of border so the text isn't offset */
@@ -30,20 +31,19 @@ window#waybar.hidden {
     border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
     background-color: #3c3836;
 }
 
-/* #workspaces button.focused {
-    color: #DCD7BA;
-	background-color: #2d4f67;
-} */
+/* #workspaces button.focused { */
+/*     color: #DCD7BA; */
+/* 	background-color: #2d4f67; */
+/* } */
 
 #workspaces button.active {
-    color: #DCD7BA;
-    background-color: #2d4f67;
+    color: #7e9cd8;
+    /*background-color: #2d4f67;*/
 }
 
 #workspaces button.urgent {
@@ -118,9 +118,9 @@ to {
 	color: #7e9CD8;
 }
 
-#battery.warning:not(.charging) {
-	color: #FFA066;
-}
+/* #battery.warning:not(.charging) { */
+/* 	color: #FFA066; */
+/* } */
 
 #battery.critical:not(.charging) {
 	background-color: #1d2021;
@@ -137,6 +137,10 @@ label:focus {
 }
 
 #backlight {
+	color: #E6C384;
+}
+
+#network {
 	color: #E6C384;
 }
 
@@ -166,7 +170,7 @@ label:focus {
 	color: #957FB8;
 }
 
-#idle_inhibitor.activated {	
+/*#idle_inhibitor.activated {	
 	background-color: #1d2021;
 	color: #957FB8;
-}
+}*/
