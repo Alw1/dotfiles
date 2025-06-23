@@ -14,7 +14,6 @@
 			melonDS
 			prismlauncher
 			snes9x
-			lime3ds
 		];
 	};
 }

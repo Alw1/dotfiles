@@ -44,9 +44,7 @@
 			kitty
 			grim
 			slurp
-			pavucontrol
 			playerctl
-			pulseaudioFull 
 			brightnessctl
 			networkmanagerapplet
 			papers

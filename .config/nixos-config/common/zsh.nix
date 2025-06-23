@@ -8,8 +8,8 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
-        system-update = ''nix flake update --flake ~/nix-config'';
-        system-upgrade = ''sudo nixos-rebuild switch --flake ~/nix-config#$HOST'';
+        system-update = ''nix flake update --flake ~/.config/nixos-config'';
+        system-upgrade = ''sudo nixos-rebuild switch --flake ~/.config/nixos-config#$HOST'';
       };
     };
 }

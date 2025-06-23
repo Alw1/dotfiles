@@ -6,12 +6,9 @@ let packages = {
       fastfetch
       gotop
       tree
-      ventoy-full
       stow
       pywal
       usbutils
-	  chezmoi
-	  yazi
       zip
       unzip
       xz
@@ -44,9 +41,7 @@ let packages = {
       libreoffice
       gparted
       gnome-disk-utility
-      mediawriter
       cheese
-      woeusb
     ];
   };
 in
@@ -55,10 +50,9 @@ in
 
   fonts.packages = [
     intel-one-mono
-    nerdfonts
     jetbrains-mono
     font-awesome
     monaspace
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }
 

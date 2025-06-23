@@ -84,23 +84,10 @@
       efiSupport = true;
       useOSProber = true;
       device = "nodev";
-      # theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
     };
   };
 
   programs = {
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    #   enableLsColors = true;
-    #   autosuggestions.enable = true;
-    #   syntaxHighlighting.enable = true;
-    #   shellAliases = {
-    #     rotom-update = ''nix flake update --flake ~/nix-config'';
-    #     rotom-upgrade = ''sudo nixos-rebuild switch --flake ~/nix-config#$HOST'';
-    #   };
-    # };
-
     firefox.enable = true;
 
 	neovim = {
