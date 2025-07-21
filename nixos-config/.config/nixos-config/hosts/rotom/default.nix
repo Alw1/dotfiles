@@ -7,10 +7,8 @@
   ];
 
   hyprland.enable = true;
+  tuigreet.enable = true;
   gaming.enable = true;
-  # virtualization.enable = true;
-
-  hardware.graphics.enable = true;
 
   nix = {
     gc = {
@@ -29,6 +27,15 @@
   hardware.bluetooth = {
 		enable = true;
 		powerOnBoot = false;
+	};
+	security.rtkit.enable = true;
+	services.pulseaudio.enable = false;
+	services.pipewire = {
+	  enable = true;
+	  alsa.enable = true;
+	  alsa.support32Bit = true;
+	  pulse.enable = true;
+	  wireplumber.enable = true;
 	};
 
   programs.nix-ld.enable = true;
@@ -57,15 +64,15 @@
       };
     };
 
-    displayManager.ly = {
-      enable = true;
-      settings = {
-        animation = "matrix";
-        load = true;
-        save = true;
-        clear_password = true;
-      };
-    };
+    # displayManager.ly = {
+    #   enable = true;
+    #   settings = {
+    #     animation = "matrix";
+    #     load = true;
+    #     save = true;
+    #     clear_password = true;
+    #   };
+    # };
 
     xserver = {
       enable = true;
@@ -93,7 +100,6 @@
 	neovim = {
 	     enable = true;
 	     defaultEditor = true;
-	     package = unstablePkgs.neovim-unwrapped;
     };
   };
 
