@@ -2,6 +2,7 @@
 
 let packages = {
     cliPrograms = [
+	  ranger
       hyfetch
       fastfetch
       gotop

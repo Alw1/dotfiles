@@ -8,15 +8,12 @@
 
   hyprland.enable = true;
   tuigreet.enable = true;
-  # GNOME.enable = true;
   gaming.enable = true;
 
   services.hardware.openrgb = {
  	 enable = true;
 	 motherboard = "amd";
   };
-
-  hardware.graphics.enable = true;
 
   nix = {
     gc = {
@@ -87,8 +84,7 @@
 	   neovim = {
 	     enable = true;
 	     defaultEditor = true;
-		 package = unstablePkgs.neovim-unwrapped;
-    };
+		};
     firefox.enable = true;
   };
 

@@ -1,11 +1,11 @@
-Dotfiles for my linux setup on my PC and laptop 
+# Dotfiles
 
+Configuration files for my Linux Laptop and PC setups
 
-- NixOS
-- Hyprland
-- Sway
-- Neovim
-- Fuzzel
-- Mako
-- Kitty
+## Installation
 
+```sh
+git clone git@github.com/Alw1/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+stow *
+```
