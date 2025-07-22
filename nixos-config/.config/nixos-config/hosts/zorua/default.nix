@@ -46,14 +46,6 @@
 
   programs.nix-ld.enable = true;
   services = {
-    openssh = {
-      enable = true;
-      ports = [ 22 ];
-      settings = {
-        PasswordAuthentication = true;
-        PermitRootLogin = "prohibit-password";
-      };
-    };
 
     gvfs.enable = true;
     udisks2.enable = true;
