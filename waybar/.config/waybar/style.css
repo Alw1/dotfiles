@@ -3,7 +3,6 @@
 *{
     font-family: "Intel One Mono", "Font Awesome 5 Free";
     font-size: 15;
-	/* padding: 0 5px; */
 }
 
 window#waybar {
@@ -43,7 +42,6 @@ window#waybar.hidden {
 
 #workspaces button.active {
     color: #7e9cd8;
-    /*background-color: #2d4f67;*/
 }
 
 #workspaces button.urgent {
@@ -67,7 +65,7 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor,
 #mpd {
-    padding: 0 10px;
+    padding: 0 0.9em;
     background-color: #1d2021;
     color: #DCD7BA;
 }
@@ -105,7 +103,7 @@ window#waybar.hidden {
 }
 
 #clock {
-	color: #c8c093;
+	color: #7e9CD8;
 }
 
 @keyframes blink {
@@ -117,10 +115,6 @@ to {
 #battery, #battery.charging, #battery.plugged {
 	color: #7e9CD8;
 }
-
-/* #battery.warning:not(.charging) { */
-/* 	color: #FFA066; */
-/* } */
 
 #battery.critical:not(.charging) {
 	background-color: #1d2021;
@@ -169,8 +163,3 @@ label:focus {
 	background-color: #1d2021;
 	color: #957FB8;
 }
-
-/*#idle_inhibitor.activated {	
-	background-color: #1d2021;
-	color: #957FB8;
-}*/

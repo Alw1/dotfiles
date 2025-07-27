@@ -2,6 +2,7 @@
 
 let packages = {
     cliPrograms = [
+	  pokeget-rs
 	  ranger
       hyfetch
       fastfetch

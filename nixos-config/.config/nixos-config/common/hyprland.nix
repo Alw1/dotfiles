@@ -41,6 +41,7 @@
 			blueberry
 			nautilus
 			mako
+			swaynotificationcenter
 			kitty
 			grim
 			slurp

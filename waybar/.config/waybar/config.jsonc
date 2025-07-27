@@ -6,7 +6,6 @@
 		"hyprland/workspaces"
 	],
 	"modules-center": [
-		"clock"
 	],
 	"modules-right": [
 		"tray",
@@ -14,8 +13,9 @@
 		"memory",
 		"network",
 		"pulseaudio",
+		"idle_inhibitor",
 		"battery",
-		"idle_inhibitor"
+		"clock"
 	],
 	"network": {
 		"format-wifi": "{signalStrength}%  ",
@@ -34,6 +34,9 @@
 		"disable-scroll": true,
 		"all-outputs": false,
 		"format": "{name}: {icon} ",
+		"persistent-workspaces": {
+			"*": 5
+		},
 		"format-icons": {
 			"1": "web 󰈹",
 			"2": "discord ",
@@ -43,7 +46,7 @@
 		}
 	},
 	"idle_inhibitor": {
-		"format": "{icon}  ",
+		"format": "{icon}",
 		"format-icons": {
 			"activated": "",
 			"deactivated": ""
@@ -55,7 +58,7 @@
 		"spacing": 10
 	},
 	"clock": {
-		"format": "{:%I:%M %p | %a, %b %d}",
+		"format": "{:%I:%M %p}",
 		"tooltip": false
 	},
 	"cpu": {
