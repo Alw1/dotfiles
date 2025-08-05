@@ -34,9 +34,6 @@
 		"disable-scroll": true,
 		"all-outputs": false,
 		"format": "{name}: {icon} ",
-		"persistent-workspaces": {
-			"*": 5
-		},
 		"format-icons": {
 			"1": "web 󰈹",
 			"2": "discord ",

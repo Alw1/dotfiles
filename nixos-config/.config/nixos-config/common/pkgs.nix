@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, lib, ... }: with pkgs;
+{ pkgs, lib, ... }: with pkgs;
 
 let packages = {
     cliPrograms = [

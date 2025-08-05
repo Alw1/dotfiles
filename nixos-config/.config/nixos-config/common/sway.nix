@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }: {
 
   options.sway.enable = lib.mkEnableOption "Enable Sway";
   config = lib.mkIf config.sway.enable {

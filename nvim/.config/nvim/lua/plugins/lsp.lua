@@ -17,6 +17,8 @@ return {
 			"jsonls",
 			"yamlls",
 			"cssls",
+			"nix_ls",
+			"nixfmt",
 			"html",
 			"marksman",
 			"lua_ls",

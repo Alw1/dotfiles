@@ -24,10 +24,11 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.bluetooth = {
+   hardware.bluetooth = {
 		enable = true;
 		powerOnBoot = false;
 	};
+
 	security.rtkit.enable = true;
 	services.pulseaudio.enable = false;
 	services.pipewire = {
@@ -38,7 +39,6 @@
 	  wireplumber.enable = true;
 	};
 
-  programs.nix-ld.enable = true;
   services = {
 
     gvfs.enable = true;
@@ -63,16 +63,6 @@
         CPU_MAX_PERF_ON_BAT = 80;
       };
     };
-
-    # displayManager.ly = {
-    #   enable = true;
-    #   settings = {
-    #     animation = "matrix";
-    #     load = true;
-    #     save = true;
-    #     clear_password = true;
-    #   };
-    # };
 
     xserver = {
       enable = true;
@@ -101,9 +91,11 @@
 	     enable = true;
 	     defaultEditor = true;
     };
+
+    programs.nix-ld.enable = true;
   };
 
-  networking.hostName = "rotom";
+  networking.hostName = "porygon";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }

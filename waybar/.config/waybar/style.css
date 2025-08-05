@@ -65,7 +65,7 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor,
 #mpd {
-    padding: 0 0.9em;
+    padding: 0 0.5em;
     background-color: #1d2021;
     color: #DCD7BA;
 }
