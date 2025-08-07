@@ -27,9 +27,6 @@ wallpapers = []
 for format in supported_formats:
     wallpapers += glob.glob(f'*.{format}')
 
-    if (wallpaper := f'wallpaper.{format}') in wallpapers:
-        wallpapers.remove(wallpaper)
-
 wallpaper = run(
     ['fuzzel','--dmenu','-l', f'{len(wallpapers)}'],
     input="\n".join(wallpapers),

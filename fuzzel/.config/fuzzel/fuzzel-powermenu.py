@@ -13,7 +13,7 @@ options = {
 
 option = run(
     ['fuzzel','--dmenu','-l', f'{len(options)}', '-p', 'Power Menu: '],
-    input="\n".join([f'{i+1}. {opt}' for i, opt in enumerate(options)]),
+    input="\n".join([f'{i}. {opt}' for i, opt in enumerate(options, start=1)]),
     capture_output=True,
     text=True).stdout.strip()
 

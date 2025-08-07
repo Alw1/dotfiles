@@ -2,11 +2,12 @@
 
   options.sway.enable = lib.mkEnableOption "Enable Sway";
   config = lib.mkIf config.sway.enable {
+
     programs = {
       sway = {
         enable = true;
         wrapperFeatures.gtk = true;
-		xwayland.enable = true;
+        xwayland.enable = true;
       };
       waybar = {
         enable = true;

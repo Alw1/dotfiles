@@ -7,5 +7,5 @@ Configuration files for my Linux Laptop and PC setups
 ```sh
 git clone git@github.com/Alw1/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-stow *
+stow --adopt *
 ```

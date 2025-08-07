@@ -1,6 +1,6 @@
 {
   description = "Alex Wyatt's NixOS Setup";
-  
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,7 +14,7 @@
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
-      
+
       # Create overlay for unstable packages
       overlays = [
         (final: prev: {
@@ -31,13 +31,12 @@
           inherit overlays;
           config.allowUnfree = true;
         };
-        
+
         # You could add other common system-wide config here
         # networking.networkmanager.enable = true;
         # time.timeZone = "America/New_York";
       };
 
-      # Common home-manager configuration
       homeManagerModule = {
         home-manager = {
           useGlobalPkgs = true;
@@ -46,22 +45,29 @@
         };
       };
 
-      # Helper function to create a host configuration
-      mkHost = hostPath: extraModules: nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          hostPath
-          commonModule
-          home-manager.nixosModules.home-manager
-          homeManagerModule
-        ] ++ extraModules;
-      };
-    in
-    {
+      mkHost = hostPath: extraModules:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            hostPath
+            commonModule
+            home-manager.nixosModules.home-manager
+            homeManagerModule
+          ] ++ extraModules;
+        };
+
+    in {
       nixosConfigurations = {
-        zorua = mkHost ./hosts/zorua [];
-        porygon = mkHost ./hosts/porygon [ nixos-hardware.nixosModules.surface-common ];
-        rotom = mkHost ./hosts/rotom [];
+
+        # PC
+        zorua = mkHost ./hosts/zorua [ ];
+
+        # Surface Laptop 6
+        porygon = mkHost ./hosts/porygon
+          [ nixos-hardware.nixosModules.microsoft-surface-common ];
+
+        # Surface Laptop 3
+        rotom = mkHost ./hosts/rotom [ ];
       };
     };
 }

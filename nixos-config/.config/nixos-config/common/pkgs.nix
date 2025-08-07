@@ -1,11 +1,14 @@
-{ pkgs, lib, ... }: with pkgs;
+{ pkgs, lib, ... }:
+with pkgs;
 
-let packages = {
+let
+  packages = {
     cliPrograms = [
-	  pokeget-rs
-	  ranger
+      pokeget-rs
+      ranger
       hyfetch
       fastfetch
+	  powertop
       gotop
       tree
       stow
@@ -26,35 +29,24 @@ let packages = {
       go
       jdk
       rustc
-	  rustfmt
+      rustfmt
       python3
       python312Packages.pip
       nodejs_20
       cargo
       cabal-install
     ];
-    video = [
-      vlc
-    ];
-    miscPrograms = [
-      spotify
-	  wine
-      discord
-      libreoffice
-      gparted
-      gnome-disk-utility
-      cheese
-    ];
+    video = [ 
+		vlc 
+	];
+    miscPrograms =
+      [ spotify wine discord libreoffice gparted gnome-disk-utility cheese firefox];
   };
-in
-{
+in {
   environment.systemPackages = lib.concatLists (lib.attrValues packages);
 
-  fonts.packages = [
-    intel-one-mono
-    jetbrains-mono
-    font-awesome
-    monaspace
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = [ intel-one-mono jetbrains-mono font-awesome monaspace ]
+    ++ builtins.filter lib.attrsets.isDerivation
+    (builtins.attrValues pkgs.nerd-fonts);
 }
 

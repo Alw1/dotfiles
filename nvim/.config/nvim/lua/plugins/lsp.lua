@@ -4,8 +4,10 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
 		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
 		local mason = require("mason")
@@ -17,8 +19,6 @@ return {
 			"jsonls",
 			"yamlls",
 			"cssls",
-			"nix_ls",
-			"nixfmt",
 			"html",
 			"marksman",
 			"lua_ls",

@@ -1,14 +1,18 @@
 { ... }: {
 
-  imports = [
-    ./hardware-configuration.nix
-    ../../common
-    ../../users/alex/user.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ../../common ../../users/alex/user.nix ];
 
   hyprland.enable = true;
-  tuigreet.enable = true;
   gaming.enable = true;
+
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animation = "matrix";
+      clear_password = true;
+    };
+  };
 
   nix = {
     gc = {
@@ -24,20 +28,21 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-   hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = false;
-	};
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
 
-	security.rtkit.enable = true;
-	services.pulseaudio.enable = false;
-	services.pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  wireplumber.enable = true;
-	};
+  # Audio 
+  security.rtkit.enable = true;
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
 
   services = {
 
@@ -45,23 +50,23 @@
     udisks2.enable = true;
     printing.enable = true;
 
+    # Power Saver Settings
     power-profiles-daemon.enable = false; # Need to disable to enable tlp
     thermald.enable = true;
     upower.enable = true;
-    tlp = {
+    auto-cpufreq = {
       enable = true;
       settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 80;
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+        battery = {
+          governor = "powersave";
+          turbo = "auto";
+        };
       };
+
     };
 
     xserver = {
@@ -84,15 +89,29 @@
     };
   };
 
+  boot.kernelParams = [
+    # Fixes battery drain after laptop shutdown
+    "pci=hpiosize=0"
+    "acpi=force"
+    "reboot=acpi"
+    "mem_sleep_default=s2idle"
+
+    # Fixes wake detection after suspend
+    "i8042.noaux=1" # This is the big one for Surface keyboards
+    "i8042.nomux=1" # Disable PS/2 multiplexing
+    "i8042.reset=1" # Reset controller
+    ''acpi_osi="Windows 2020"'' # Better ACPI compatibility
+  ];
+
   programs = {
     firefox.enable = true;
 
-	neovim = {
-	     enable = true;
-	     defaultEditor = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
     };
 
-    programs.nix-ld.enable = true;
+    nix-ld.enable = true;
   };
 
   networking.hostName = "porygon";
