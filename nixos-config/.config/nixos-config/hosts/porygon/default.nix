@@ -3,6 +3,7 @@
   imports =
     [ ./hardware-configuration.nix ../../common ../../users/alex/user.nix ];
 
+  niri.enable = true;
   hyprland.enable = true;
   gaming.enable = true;
 
@@ -94,7 +95,6 @@
     "pci=hpiosize=0"
     "acpi=force"
     "reboot=acpi"
-    "mem_sleep_default=s2idle"
 
     # Fixes wake detection after suspend
     "i8042.noaux=1" # This is the big one for Surface keyboards
@@ -104,7 +104,6 @@
   ];
 
   programs = {
-    firefox.enable = true;
 
     neovim = {
       enable = true;

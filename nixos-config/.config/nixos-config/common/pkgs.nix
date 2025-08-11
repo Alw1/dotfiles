@@ -33,6 +33,7 @@ let
       python3
       python312Packages.pip
       nodejs_20
+	  firefox
       cargo
       cabal-install
     ];

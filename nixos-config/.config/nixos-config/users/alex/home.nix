@@ -12,9 +12,7 @@
   };
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
   };
 
   gtk = {
@@ -37,9 +35,9 @@
   };
 
   programs.git = {
-	enable = true;
-	userName = "Alex Wyatt";
-	userEmail = "alexander@jdwyatt.com";
+    enable = true;
+    userName = "Alex Wyatt";
+    userEmail = "alexander@jdwyatt.com";
   };
 
   programs.home-manager.enable = true;

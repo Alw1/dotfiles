@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/26ed7a0d4b8741fe1ef1ee6fa64453ca056ce113";
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
