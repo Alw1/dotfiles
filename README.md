@@ -10,7 +10,7 @@ cd ~/.dotfiles
 stow --adopt *
 ```
 
-
+## Screenshots
  ![Desktop](/assets/desktop.png)
  ![Neovim](/assets/neovim.png)
  ![Gotop](/assets/gotop.png)
