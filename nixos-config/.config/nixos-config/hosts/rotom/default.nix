@@ -1,42 +1,25 @@
 { ... }: {
 
-  imports = [
-    ./hardware-configuration.nix
-    ../../common
-    ../../users/alex/user.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ../../modules ../../users/alex/user.nix ];
 
   hyprland.enable = true;
   tuigreet.enable = true;
   gaming.enable = true;
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    settings.auto-optimise-store = true;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-
   hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = false;
-	};
-	security.rtkit.enable = true;
-	services.pulseaudio.enable = false;
-	services.pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  wireplumber.enable = true;
-	};
+    enable = true;
+    powerOnBoot = false;
+  };
+  security.rtkit.enable = true;
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
 
   programs.nix-ld.enable = true;
   services = {
@@ -97,9 +80,9 @@
   programs = {
     firefox.enable = true;
 
-	neovim = {
-	     enable = true;
-	     defaultEditor = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
     };
   };
 

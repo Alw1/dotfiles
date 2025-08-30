@@ -1,38 +1,22 @@
 { ... }: {
 
   imports =
-    [ ./hardware-configuration.nix ../../common ../../users/alex/user.nix ];
+    [ ./hardware-configuration.nix ../../modules ../../users/alex/user.nix ];
 
-  niri.enable = true;
-  hyprland.enable = true;
+  # laptop specific settings
+  laptop-settings.enable = true;
+
+  # Bootloader
+  GRUB.enable = true; 
+
+  # Display Manager
+  ly.enable = true; 
+
+  # Window Manager
+  hyprland.enable = true; 
+
+  # Gaming software and settings
   gaming.enable = true;
-
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      animation = "matrix";
-      clear_password = true;
-    };
-  };
-
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    settings.auto-optimise-store = true;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
 
   # Audio 
   security.rtkit.enable = true;
@@ -51,25 +35,6 @@
     udisks2.enable = true;
     printing.enable = true;
 
-    # Power Saver Settings
-    power-profiles-daemon.enable = false; # Need to disable to enable tlp
-    thermald.enable = true;
-    upower.enable = true;
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-        battery = {
-          governor = "powersave";
-          turbo = "auto";
-        };
-      };
-
-    };
-
     xserver = {
       enable = true;
       xkb.layout = "us";
@@ -77,30 +42,22 @@
     };
   };
 
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/";
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      useOSProber = true;
-      device = "nodev";
-    };
-  };
-
   boot.kernelParams = [
-    # Fixes battery drain after laptop shutdown
+	/*
+		These parameters fix two issues with linux on 
+		certain surface laptop modules:
+			- Battery draining after shutdown 
+			- Suspend not working properly (unable to wake from suspend)
+	*/
+
+	# Battery drain fix
     "pci=hpiosize=0"
     "acpi=force"
     "reboot=acpi"
 
-    # Fixes wake detection after suspend
-    "i8042.noaux=1" # This is the big one for Surface keyboards
-    "i8042.nomux=1" # Disable PS/2 multiplexing
-    "i8042.reset=1" # Reset controller
-    ''acpi_osi="Windows 2020"'' # Better ACPI compatibility
+	# Suspend fix
+    "acpi_sleep=nonvs"
+    ''acpi_osi="Windows 2020"''
   ];
 
   programs = {

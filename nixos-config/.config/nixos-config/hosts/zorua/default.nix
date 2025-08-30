@@ -1,48 +1,31 @@
 { ... }: {
 
-  imports = [
-    ./hardware-configuration.nix
-    ../../common
-    ../../users/alex/user.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ../../modules ../../users/alex/user.nix ];
 
   hyprland.enable = true;
   tuigreet.enable = true;
   gaming.enable = true;
 
   services.hardware.openrgb = {
- 	 enable = true;
-	 motherboard = "amd";
+    enable = true;
+    motherboard = "amd";
   };
-
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    settings.auto-optimise-store = true;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = false;
+    enable = true;
+    powerOnBoot = false;
   };
 
-	security.rtkit.enable = true;
-	services.pulseaudio.enable = false;
-	services.pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  wireplumber.enable = true;
-	};
+  security.rtkit.enable = true;
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
 
   programs.nix-ld.enable = true;
   services = {
@@ -51,19 +34,19 @@
     udisks2.enable = true;
     printing.enable = true;
 
-	# displayManager.ly = {
-	# 	enable = true;
-	# 	settings = {
-	# 	  animation = "colormix";
-	# 	  load = true;
-	# 	  save = true;
-	# 	  clear_password = true;
-	# 	};
-	  # };
+    # displayManager.ly = {
+    # 	enable = true;
+    # 	settings = {
+    # 	  animation = "colormix";
+    # 	  load = true;
+    # 	  save = true;
+    # 	  clear_password = true;
+    # 	};
+    # };
 
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
       xkb.layout = "us";
       xkb.variant = "";
     };
@@ -73,10 +56,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   programs = {
-	   neovim = {
-	     enable = true;
-	     defaultEditor = true;
-		};
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
     firefox.enable = true;
   };
 

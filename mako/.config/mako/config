@@ -8,7 +8,7 @@ on-button-right=dismiss-all
 
 # Style options
 font=Intel One Mono 10
-background-color=#252423
+background-color=#000000B0
 text-color=#d4be98
 width=300
 height=100

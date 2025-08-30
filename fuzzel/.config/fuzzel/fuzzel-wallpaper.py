@@ -27,8 +27,10 @@ wallpapers = []
 for format in supported_formats:
     wallpapers += glob.glob(f'*.{format}')
 
+wallpapers = {name.split('.')[0]: name for name in wallpapers}
+
 wallpaper = run(
-    ['fuzzel','--dmenu','-l', f'{len(wallpapers)}'],
+    ['fuzzel','--dmenu','-l', f'{len(wallpapers)}', '-p', 'Wallpaper: '],
     input="\n".join(wallpapers),
     capture_output=True,
     text=True).stdout.strip()
@@ -36,6 +38,6 @@ wallpaper = run(
 if wallpaper in wallpapers:
     match sys.argv[1]:
         case 'swww':
-            run(['swww', 'img', f'{wallpaper_dir}/{wallpaper}', '--transition-type', 'center'])
+            run(['swww', 'img', f'{wallpaper_dir}/{wallpapers[wallpaper]}', '--transition-type', 'center'])
         case _:
             run(['notify-send', 'Wallpaper Picker', f'Invalid Wallpaper Engine'])

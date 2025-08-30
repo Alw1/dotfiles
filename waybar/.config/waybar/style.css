@@ -74,24 +74,6 @@ window#waybar.hidden {
     margin: 0 4px;
 }
 
-/*
-#workspaces button:nth-child(1).focused { 
-	background-color: #FF5D62; 
-} 
-#workspaces button:nth-child(2).focused { 
-	background-color: #FFA066; 
-} 
-#workspaces button:nth-child(3).focused { 
-	background-color: #e6b255; 
-} 
-#workspaces button:nth-child(4).focused { 
-	background-color: #76946a; 
-} 
-#workspaces button:nth-child(5).focused { 
-	background-color: #7e9CD8; 
-} 
-*/
-
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
 	margin-left: 0;

@@ -2,6 +2,7 @@
 
 from subprocess import run
 
+# Name : Command
 options = {
     "Lock"           : "hyprlock",
     "Suspend"        : "systemctl suspend",

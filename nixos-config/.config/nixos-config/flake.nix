@@ -8,7 +8,8 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/26ed7a0d4b8741fe1ef1ee6fa64453ca056ce113";
+    nixos-hardware.url =
+      "github:NixOS/nixos-hardware/26ed7a0d4b8741fe1ef1ee6fa64453ca056ce113";
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
@@ -32,9 +33,19 @@
           config.allowUnfree = true;
         };
 
-        # You could add other common system-wide config here
-        # networking.networkmanager.enable = true;
-        # time.timeZone = "America/New_York";
+        time.timeZone = "America/New_York";
+        i18n.defaultLocale = "en_US.UTF-8";
+
+        nix = {
+          gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 7d";
+          };
+
+          settings.auto-optimise-store = true;
+          settings.experimental-features = [ "nix-command" "flakes" ];
+        };
       };
 
       homeManagerModule = {
