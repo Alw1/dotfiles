@@ -16,7 +16,7 @@
     let
       system = "x86_64-linux";
 
-      # Create overlay for unstable packages
+      # overlay for unstable packages
       overlays = [
         (final: prev: {
           unstable = import nixpkgs-unstable {

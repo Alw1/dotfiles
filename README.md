@@ -13,10 +13,12 @@ stow --adopt */
 cd ~/.config/nixos-config
 
 # Make sure to add host directory in the nixos-config folder before building, then execute the below command with the proper host
-sudo nixos-rebuild switch --flake.#$HOST
+sudo nixos-rebuild switch --flake .#$HOST --experimental-features 'nix-command flakes'
 ```
 
 ## Screenshots
- ![Desktop](/assets/desktop.png)
- ![Neovim](/assets/neovim.png)
- ![Gotop](/assets/gotop.png)
+
+| ![Desktop](/assets/desktop.png) | ![Gotop](/assets/gotop.png) |
+|---------------------------------|-----------------------------|
+| ![Neovim](/assets/neovim.png)   | ![Neovim2](/asset/neovim-open.png) |
+
