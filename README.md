@@ -20,5 +20,5 @@ sudo nixos-rebuild switch --flake .#$HOST --experimental-features 'nix-command f
 
 | ![Desktop](/assets/desktop.png) | ![Gotop](/assets/gotop.png) |
 |---------------------------------|-----------------------------|
-| ![Neovim](/assets/neovim.png)   | ![Neovim2](/asset/neovim-open.png) |
+| ![Neovim](/assets/neovim.png)   | ![Neovim2](/assets/neovim-open.png) |
 
