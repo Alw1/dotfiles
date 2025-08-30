@@ -11,6 +11,6 @@ stow --adopt *
 ```
 
 
- ![Desktop](/assets/desktop.jpg)
- ![Neovim](/assets/neovim.jpg)
- ![Gotop](/assets/gotop.jpg)
+ ![Desktop](/assets/desktop.png)
+ ![Neovim](/assets/neovim.png)
+ ![Gotop](/assets/gotop.png)
