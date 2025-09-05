@@ -36,8 +36,4 @@ wallpaper = run(
     text=True).stdout.strip()
 
 if wallpaper in wallpapers:
-    match sys.argv[1]:
-        case 'swww':
-            run(['swww', 'img', f'{wallpaper_dir}/{wallpapers[wallpaper]}', '--transition-type', 'center'])
-        case _:
-            run(['notify-send', 'Wallpaper Picker', f'Invalid Wallpaper Engine'])
+    run(['matugen', 'image', f'{wallpaper_dir}/{wallpapers[wallpaper]}'])

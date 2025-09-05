@@ -11,6 +11,7 @@ let
       powertop
       gotop
       tree
+      tmux
       stow
       pywal
       usbutils

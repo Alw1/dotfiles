@@ -48,6 +48,7 @@
       papers
       eog
       fuzzel
+	  matugen
       wofi
     ];
   };
