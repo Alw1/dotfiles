@@ -28,7 +28,8 @@
 	"custom/icon": {
 		"format": "<span> 󱄅 </span>",
 		"tooltip": false,
-		"align": "center"
+		"align": "center",
+		"on-click": "swaync-client -t"
 	},
 	"hyprland/workspaces": {
 		"disable-scroll": true,
@@ -57,7 +58,7 @@
 	"clock": {
 		"format": "{:%I:%M %p}",
 		"tooltip-format": "{:%A, %B %d, %Y}",
-		"tooltip": true
+		"on-click": "swaync-client -t"
 	},
 	"cpu": {
 		"format": "CPU {usage}%",
@@ -87,11 +88,11 @@
 	},
 	"pulseaudio": {
 		"format": "{volume}% {icon}",
-		"format-bluetooth": "{volume}% {icon}",
-		"format-bluetooth-muted": "{icon}",
 		"format-muted": "MUTED ",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-bluetooth-muted": "MUTED ",
 		"format-source": "{volume}% ",
-		"format-source-muted": "",
+		"format-source-muted": "MUTED ",
 		"format-icons": {
 			"headphone": "",
 			"hands-free": "",

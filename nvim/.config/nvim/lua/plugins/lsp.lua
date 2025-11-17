@@ -23,8 +23,9 @@ return {
 			"marksman",
 			"lua_ls",
 			"rust_analyzer",
-			"pyright",
-			"clangd",
+			"basedpyright",
+			"ruff",
+			-- "clangd",
 			"bashls",
 			"verible",
 			"vhdl_ls",
@@ -112,8 +113,8 @@ return {
 		})
 
 		vim.diagnostic.config({
-			-- virtual_text = true,
-			virtual_lines = true, -- multiline diagnostics
+			virtual_text = true,
+			-- virtual_lines = true, -- multiline diagnostics
 			signs = true,
 			underline = true,
 			update_in_insert = false,

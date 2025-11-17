@@ -12,9 +12,9 @@
       spice
       spice-gtk
       spice-protocol
+	  gnome-boxes
     ];
 
-    virtualisation.docker.enable = true;
     users.users.alex.extraGroups = [ "libvirtd" "docker" ];
 
     virtualisation = {
@@ -27,6 +27,7 @@
         };
       };
       spiceUSBRedirection.enable = true;
+	  docker.enable = true;
     };
     services.spice-vdagentd.enable = true;
   };

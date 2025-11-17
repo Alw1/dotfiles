@@ -9,7 +9,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url =
-      "github:NixOS/nixos-hardware/26ed7a0d4b8741fe1ef1ee6fa64453ca056ce113";
+      "github:NixOS/nixos-hardware";
+
+    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:

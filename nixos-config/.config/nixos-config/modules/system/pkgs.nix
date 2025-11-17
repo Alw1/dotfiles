@@ -5,7 +5,7 @@ let
   packages = {
     cliPrograms = [
       pokeget-rs
-      ranger
+      yazi
       hyfetch
       fastfetch
       powertop
@@ -15,7 +15,6 @@ let
       stow
       pywal
       usbutils
-      openssl
       zip
       unzip
       xz
@@ -23,7 +22,7 @@ let
     ];
     programmingUtils = [
       vim
-      vscode
+      vscodium-fhs
       git
       gnumake
       gcc
@@ -31,18 +30,25 @@ let
       ghc
       go
       jdk
+      julia
       pkg-config
       rustc
       rustfmt
       python3
       python312Packages.pip
+      conda
       nodejs_20
       firefox
       cargo
       cabal-install
+      haskell-language-server
+	  metals
     ];
     video = [ vlc ];
     miscPrograms = [
+      glib
+      gsettings-desktop-schemas
+      # kicad
       spotify
       wine
       discord
@@ -55,7 +61,6 @@ let
   };
 in {
   environment.systemPackages = lib.concatLists (lib.attrValues packages);
-
   fonts.packages = [ intel-one-mono jetbrains-mono font-awesome monaspace ]
     ++ builtins.filter lib.attrsets.isDerivation
     (builtins.attrValues pkgs.nerd-fonts);

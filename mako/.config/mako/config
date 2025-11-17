@@ -1,4 +1,4 @@
-# Global configuration options
+# Global configuration option
 max-history=5
 sort=+time
 

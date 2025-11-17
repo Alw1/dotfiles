@@ -17,6 +17,8 @@
 
   # Gaming software and settings
   gaming.enable = true;
+  
+  virtualization.enable = true;
 
   # Audio 
   security.rtkit.enable = true;

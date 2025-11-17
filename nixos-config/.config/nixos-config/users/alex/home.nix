@@ -17,10 +17,10 @@
 
   gtk = {
     enable = true;
-    theme = {
-      # package = pkgs.sierra-gtk-theme;
-      name = "Adwaita";
-    };
+    # theme = {
+    #   # package = pkgs.sierra-gtk-theme;
+    #   name = "Adwaita";
+    # };
 
     iconTheme = {
       package = pkgs.adwaita-icon-theme;

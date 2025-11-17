@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   networking = {
@@ -15,5 +15,11 @@
       PermitRootLogin = "prohibit-password";
     };
   };
+
+    environment.systemPackages = with pkgs; [
+		openconnect
+		openssl
+		sshfs
+	];
 }
 

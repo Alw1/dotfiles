@@ -13,6 +13,7 @@
       waybar.enable = true;
 
       dconf.enable = true;
+      # dbus.enable = true;
     };
 
     services.hypridle.enable = true;
@@ -38,6 +39,7 @@
       blueberry
       nautilus
       mako
+	  swaynotificationcenter
       kitty
       grim
       slurp
