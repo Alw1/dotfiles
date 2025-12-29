@@ -13,41 +13,41 @@ M.setup = function()
   -- Define colors from matugen palette
   local colors = {
     -- Core Material You colors
-    primary = "#abc7ff",
-    on_primary = "#0d2f5f",
-    primary_container = "#294677",
-    on_primary_container = "#d7e2ff",
+    primary = "#80d4da",
+    on_primary = "#00373a",
+    primary_container = "#004f53",
+    on_primary_container = "#9cf0f7",
     
-    secondary = "#bec6dc",
-    on_secondary = "#283041",
-    secondary_container = "#3e4759",
-    on_secondary_container = "#dae2f9",
+    secondary = "#b1cccd",
+    on_secondary = "#1b3436",
+    secondary_container = "#324b4d",
+    on_secondary_container = "#cce8ea",
     
-    tertiary = "#ddbce0",
-    on_tertiary = "#3f2844",
-    tertiary_container = "#573e5b",
-    on_tertiary_container = "#fad8fc",
+    tertiary = "#b6c7ea",
+    on_tertiary = "#20314c",
+    tertiary_container = "#374764",
+    on_tertiary_container = "#d6e3ff",
     
     error = "#ffb4ab",
     on_error = "#690005",
     error_container = "#93000a",
     on_error_container = "#ffdad6",
     
-    background = "#111318",
-    on_background = "#e2e2e9",
-    surface = "#111318",
-    on_surface = "#e2e2e9",
+    background = "#0e1415",
+    on_background = "#dde4e4",
+    surface = "#0e1415",
+    on_surface = "#dde4e4",
     
-    surface_variant = "#44474e",
-    on_surface_variant = "#c4c6d0",
-    outline = "#8e9099",
-    outline_variant = "#44474e",
+    surface_variant = "#3f4849",
+    on_surface_variant = "#bec8c9",
+    outline = "#899393",
+    outline_variant = "#3f4849",
     
     shadow = "#000000",
     scrim = "#000000",
-    inverse_surface = "#e2e2e9",
-    inverse_on_surface = "#2e3036",
-    inverse_primary = "#425e91",
+    inverse_surface = "#dde4e4",
+    inverse_on_surface = "#2b3232",
+    inverse_primary = "#00696f",
   }
 
   -- Helper function to set highlight groups

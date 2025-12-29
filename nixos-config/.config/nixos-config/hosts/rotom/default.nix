@@ -1,7 +1,13 @@
 { ... }: {
 
-  imports =
-    [ ./hardware-configuration.nix ../../modules ../../users/alex/user.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules
+    ../../users/alex/user.nix
+    ../common.nix
+  ];
+
+  networking.hostName = "rotom";
 
   hyprland.enable = true;
   tuigreet.enable = true;
@@ -11,6 +17,7 @@
     enable = true;
     powerOnBoot = false;
   };
+
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -46,22 +53,6 @@
         CPU_MAX_PERF_ON_BAT = 80;
       };
     };
-
-    # displayManager.ly = {
-    #   enable = true;
-    #   settings = {
-    #     animation = "matrix";
-    #     load = true;
-    #     save = true;
-    #     clear_password = true;
-    #   };
-    # };
-
-    xserver = {
-      enable = true;
-      xkb.layout = "us";
-      xkb.variant = "";
-    };
   };
 
   boot.loader = {
@@ -86,7 +77,6 @@
     };
   };
 
-  networking.hostName = "rotom";
 
   system.stateVersion = "23.11";
 }
