@@ -5,8 +5,7 @@
 		"custom/icon",
 		"hyprland/workspaces"
 	],
-	"modules-center": [
-	],
+	"modules-center": [],
 	"modules-right": [
 		"tray",
 		"cpu",
@@ -24,6 +23,13 @@
 		"tooltip-format": "{essid}",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠"
+	},
+	"custom/hypr-workspaces": {
+		"format": "{}",
+		"exec": "~/.config/waybar/hypr-workspaces.sh",
+		"restart-interval": 1,
+		"return-type": "pango",
+		"on-click": "hyprctl dispatch workspace {}"
 	},
 	"custom/icon": {
 		"format": "<span> 󱄅 </span>",

@@ -4,7 +4,6 @@
   config = lib.mkIf config.GNOME.enable {
 
     services.xserver = {
-      enable = true;
       desktopManager.gnome.enable = true;
     };
 

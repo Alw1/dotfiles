@@ -2,7 +2,6 @@
 
 import os
 import glob
-import sys
 from subprocess import run
 from getpass import getuser
 

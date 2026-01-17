@@ -2,35 +2,24 @@
   description = "Alex Wyatt's NixOS Setup";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
   };
-  # inputs = {
-  #   nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-  #   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-  #   home-manager = {
-  #     url = "github:nix-community/home-manager/release-25.05";
-  #     inputs.nixpkgs.follows = "nixpkgs";
-  #   };
-  #   nixos-hardware.url = "github:NixOS/nixos-hardware";
-  # };
-  #
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }:
+
+  outputs = { nixpkgs, home-manager, nixpkgs-unstable, ... }:
     let
       system = "x86_64-linux";
 
       # overlay for unstable packages
       overlays = [
         (final: prev: {
-      #     unstable = import nixpkgs-unstable {
-      #       inherit system;
-      #       config.allowUnfree = true;
-          # };
+          unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
         })
       ];
 
@@ -63,16 +52,11 @@
 
     in {
       nixosConfigurations = {
-
         # PC
         zorua = mkHost ./hosts/zorua [ ];
 
         # Surface Laptop 6
         porygon = mkHost ./hosts/porygon [];
-          # [ nixos-hardware.nixosModules.microsoft-surface-common ];
-
-        # Surface Laptop 3
-        # rotom = mkHost ./hosts/rotom [ ];
       };
     };
 }

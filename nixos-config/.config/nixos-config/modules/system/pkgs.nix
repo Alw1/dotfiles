@@ -7,13 +7,14 @@ let
       pokeget-rs
       yazi
       hyfetch
+      jq
+      socat
       fastfetch
       powertop
       gotop
       tree
       tmux
       stow
-      pywal
       usbutils
       zip
       unzip
@@ -36,25 +37,22 @@ let
       rustfmt
       python3
       python312Packages.pip
-      conda
       nodejs_20
       firefox
       cargo
       cabal-install
       haskell-language-server
-	  metals
     ];
     video = [ vlc ];
     miscPrograms = [
       glib
-      gsettings-desktop-schemas
-      # kicad
       spotify
       wine
       discord
       libreoffice
       gparted
       gnome-disk-utility
+	  claude-code
       cheese
       firefox
     ];

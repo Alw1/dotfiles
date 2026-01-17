@@ -13,7 +13,6 @@
       waybar.enable = true;
 
       dconf.enable = true;
-      # dbus.enable = true;
     };
 
     services.hypridle.enable = true;
@@ -39,7 +38,7 @@
       blueberry
       nautilus
       mako
-	  swaynotificationcenter
+      swaynotificationcenter
       kitty
       grim
       slurp
@@ -50,8 +49,12 @@
       papers
       eog
       fuzzel
-	  matugen
+      matugen
       wofi
+      imagemagick
+      glib
+      gsettings-desktop-schemas
+      nwg-look
     ];
   };
 }
