@@ -40,6 +40,7 @@
       mako
       swaynotificationcenter
       kitty
+	  ghostty
       grim
       slurp
       playerctl

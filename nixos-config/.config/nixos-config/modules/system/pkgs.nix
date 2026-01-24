@@ -32,6 +32,7 @@ let
       go
       jdk
       julia
+      octaveFull
       pkg-config
       rustc
       rustfmt
@@ -52,7 +53,7 @@ let
       libreoffice
       gparted
       gnome-disk-utility
-	  claude-code
+      claude-code
       cheese
       firefox
     ];
