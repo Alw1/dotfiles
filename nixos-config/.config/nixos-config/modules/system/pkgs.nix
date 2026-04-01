@@ -24,6 +24,8 @@ let
     programmingUtils = [
       vim
       vscodium-fhs
+      unstable.arduino-ide
+      unstable.arduino
       git
       gnumake
       gcc
@@ -51,10 +53,13 @@ let
       wine
       discord
       libreoffice
+      ifuse
       gparted
       gnome-disk-utility
       claude-code
+	  graphviz
       cheese
+	  audacity
       firefox
     ];
   };

@@ -9,74 +9,46 @@
 
   networking.hostName = "rotom";
 
+  laptop-settings.enable = true;
+  GRUB.enable = true;
+  ly.enable = true;
   hyprland.enable = true;
-  tuigreet.enable = true;
   gaming.enable = true;
+  virtualization.enable = true;
 
-  hardware.bluetooth = {
+  boot.kernelParams = [
+    /* These parameters fix issues with linux on
+       		certain surface laptop modules:
+       			- Battery draining after shutdown
+       			- Suspend not working properly (unable to wake from suspend)
+       			- Inconsistent wake from s2idle sleep mode
+
+       Note: Surface Laptop 6 (Meteor Lake) has no S3 deep sleep; only s2idle is available.
+    */
+
+    # Restricts PCI I/O port window size to prevent battery drain after shutdown
+    "pci=hpiosize=0"
+    # Forces ACPI on even if firmware is flagged as problematic
+    "acpi=force"
+    # Uses ACPI reboot method to prevent hangs on reboot
+    "reboot=acpi"
+    # Skips saving/restoring buggy NVS memory regions during suspend
+    "acpi_sleep=nonvs"
+    # Exposes Windows 2020 ACPI paths to enable proper Surface device power management
+    ''acpi_osi="Windows 2020"''
+    # Disables USB autosuspend to prevent blocked or spurious wakes
+    "usbcore.autosuspend=-1"
+    # Disables Panel Self Refresh on Xe GPU, which causes black screen on resume
+    "xe.enable_psr=0"
+    # Disables display power-gating on Xe GPU, which also causes black screen on resume
+    "xe.enable_dc=0"
+  ];
+
+  services.ollama = {
     enable = true;
-    powerOnBoot = false;
+    # Optional: preload models, see https://ollama.com/library
+    loadModels = [ "qwen3.5" ];
   };
 
-  security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-  };
-
-  programs.nix-ld.enable = true;
-  services = {
-
-    gvfs.enable = true;
-    udisks2.enable = true;
-    printing.enable = true;
-
-    power-profiles-daemon.enable = false; # Need to disable to enable tlp
-    thermald.enable = true;
-    upower.enable = true;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 80;
-      };
-    };
-  };
-
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/";
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      useOSProber = true;
-      device = "nodev";
-    };
-  };
-
-  programs = {
-    firefox.enable = true;
-
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-  };
-
-
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }
