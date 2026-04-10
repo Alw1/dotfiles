@@ -50,6 +50,8 @@ opt.cursorline = true
 opt.swapfile = false
 
 -- Make a backup when editing a file, put it in .nvimTmp/backupdir
+local backupdir = os.getenv("HOME") .. "/.nvimTmp/backupdir"
+vim.fn.mkdir(backupdir, "p")
 opt.backup = true
-vim.opt_global.backupdir = os.getenv("HOME") .. "/.nvimTmp/backupdir"
+vim.opt_global.backupdir = backupdir
 opt.backupcopy = "auto"

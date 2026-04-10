@@ -1,5 +1,6 @@
 require("core")
 
 -- Set theme to the theme of the last session
-local theme = require('last-color').recall() or 'default'
-vim.cmd.colorscheme(theme)
+local ok, last_color = pcall(require, 'last-color')
+local theme = ok and last_color.recall() or 'habamax'
+pcall(vim.cmd.colorscheme, theme)

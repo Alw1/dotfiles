@@ -3,8 +3,8 @@ return {
 	"rcarriga/nvim-notify",
 	{
 		'mrcjkb/haskell-tools.nvim',
-		version = '^6', -- Recommended
-		lazy = false, -- This plugin is already lazy
+		version = '^6',
+		ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
 	},
 	{
 		"hat0uma/csvview.nvim",
