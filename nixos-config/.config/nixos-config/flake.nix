@@ -56,7 +56,7 @@
         zorua = mkHost ./hosts/zorua [ ];
 
         # Surface Laptop 6
-        porygon = mkHost ./hosts/porygon [];
+        rotom = mkHost ./hosts/rotom [];
       };
     };
 }

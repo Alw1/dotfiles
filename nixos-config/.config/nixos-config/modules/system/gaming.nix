@@ -10,6 +10,6 @@
       protontricks.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [ melonDS prismlauncher snes9x-gtk ];
+    environment.systemPackages = with pkgs; [ melonDS prismlauncher ];
   };
 }

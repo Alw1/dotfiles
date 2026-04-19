@@ -1,4 +1,4 @@
-{ ... }: {
+{ unstable, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -38,17 +38,14 @@
     ''acpi_osi="Windows 2020"''
     # Disables USB autosuspend to prevent blocked or spurious wakes
     "usbcore.autosuspend=-1"
-    # Disables Panel Self Refresh on Xe GPU, which causes black screen on resume
-    "xe.enable_psr=0"
-    # Disables display power-gating on Xe GPU, which also causes black screen on resume
-    "xe.enable_dc=0"
   ];
 
-  services.ollama = {
-    enable = true;
-    # Optional: preload models, see https://ollama.com/library
-    loadModels = [ "qwen3.5" ];
-  };
-
+	  services.ollama = {
+	    enable = true;
+	 package = unstable.ollama;
+	    # Optional: preload models, see https://ollama.com/library
+	    loadModels = [ "qwen3.5" ];
+	  };
+	
   system.stateVersion = "24.11";
 }

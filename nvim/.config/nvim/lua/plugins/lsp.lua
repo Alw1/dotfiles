@@ -26,7 +26,7 @@ return {
 			"rust_analyzer",
 			"basedpyright",
 			"ruff",
-			-- "clangd",
+			"clangd",
 			"bashls",
 			"verible",
 			"vhdl_ls",
@@ -53,15 +53,19 @@ return {
 			callback = function(event)
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				local opts = { buffer = event.buf }
+				local builtin = require("telescope.builtin")
 
-				vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set('n', '<leader>go', vim.lsp.buf.type_definition, opts)
+				vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, opts)
+				vim.keymap.set("n", "<leader>go", builtin.lsp_type_definitions, opts)
 				vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
-				vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
-				vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations, opts)
+				vim.keymap.set("n", "<leader>gr", builtin.lsp_references, opts)
+				vim.keymap.set("n", "<leader>gs", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("n", "<leader>gS", builtin.lsp_document_symbols, opts)
+				vim.keymap.set("n", "<leader>gW", builtin.lsp_workspace_symbols, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<leader>dd", builtin.diagnostics, opts)
 
 				-- Toggle Diagnostics
 				vim.keymap.set('n', '<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)

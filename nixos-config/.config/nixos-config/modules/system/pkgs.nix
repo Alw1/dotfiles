@@ -53,13 +53,12 @@ let
       wine
       discord
       libreoffice
-      ifuse
       gparted
       gnome-disk-utility
-      claude-code
-	  graphviz
+      gnome-settings-daemon
       cheese
-	  audacity
+      audacity
+      claude-code
       firefox
     ];
   };
