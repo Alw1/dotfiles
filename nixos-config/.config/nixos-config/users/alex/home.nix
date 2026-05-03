@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.username = "alex";
   home.homeDirectory = "/home/alex";
   home.pointerCursor = {
@@ -42,6 +43,15 @@
       name = "Alex Wyatt";
       email = "alexander@jdwyatt.com";
     };
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
   };
   programs.home-manager.enable = true;
   home.stateVersion = "25.05";

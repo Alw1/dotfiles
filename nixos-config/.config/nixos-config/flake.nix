@@ -57,6 +57,9 @@
 
         # Surface Laptop 6
         rotom = mkHost ./hosts/rotom [];
+
+        # Home server (mini PC)
+        minikyu = mkHost ./hosts/minikyu [];
       };
     };
 }

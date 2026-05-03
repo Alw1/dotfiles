@@ -1,4 +1,5 @@
-{ unstable, ... }: {
+{ pkgs, ... }:
+{
 
   imports = [
     ./hardware-configuration.nix
@@ -17,13 +18,14 @@
   virtualization.enable = true;
 
   boot.kernelParams = [
-    /* These parameters fix issues with linux on
-       		certain surface laptop modules:
-       			- Battery draining after shutdown
-       			- Suspend not working properly (unable to wake from suspend)
-       			- Inconsistent wake from s2idle sleep mode
+    /*
+      These parameters fix issues with linux on
+      		certain surface laptop modules:
+      			- Battery draining after shutdown
+      			- Suspend not working properly (unable to wake from suspend)
+      			- Inconsistent wake from s2idle sleep mode
 
-       Note: Surface Laptop 6 (Meteor Lake) has no S3 deep sleep; only s2idle is available.
+      Note: Surface Laptop 6 (Meteor Lake) has no S3 deep sleep; only s2idle is available.
     */
 
     # Restricts PCI I/O port window size to prevent battery drain after shutdown
@@ -40,12 +42,15 @@
     "usbcore.autosuspend=-1"
   ];
 
-	  services.ollama = {
-	    enable = true;
-	 package = unstable.ollama;
-	    # Optional: preload models, see https://ollama.com/library
-	    loadModels = [ "qwen3.5" ];
-	  };
-	
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama;
+    # Optional: preload models, see https://ollama.com/library
+    loadModels = [
+      "qwen3.6"
+      "deepseek-v4-pro"
+    ];
+  };
+
   system.stateVersion = "24.11";
 }

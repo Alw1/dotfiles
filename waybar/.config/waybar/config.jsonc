@@ -40,14 +40,7 @@
 	"hyprland/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": false,
-		"format": "{name}: {icon} ",
-		"format-icons": {
-			"1": "web 󰈹",
-			"2": "discord ",
-			"3": "music ",
-			"4": "term ",
-			"5": "code "
-		}
+		"format": "{name}"
 	},
 	"idle_inhibitor": {
 		"format": "{icon}",
