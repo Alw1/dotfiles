@@ -16,7 +16,7 @@ def get_label(class_name: str) -> str:
     overrides = {
         'google-chrome': 'chrome',
         'code-oss': 'code',
-        'codium': 'code',
+        'codium': 'VSCode',
         'org.gnome.Nautilus': 'files',
     }
     lower = class_name.lower()

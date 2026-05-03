@@ -1,4 +1,10 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
 
   options.hyprland.enable = lib.mkEnableOption "Enable Hyprland";
   config = lib.mkIf config.hyprland.enable {
@@ -20,9 +26,18 @@
 
     xdg.portal = {
       enable = true;
-      extraPortals =
-        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
-      config = { common = { default = [ "hyprland" "gtk" ]; }; };
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config = {
+        common = {
+          default = [
+            "hyprland"
+            "gtk"
+          ];
+        };
+      };
     };
 
     environment.sessionVariables = {
@@ -40,7 +55,7 @@
       mako
       swaynotificationcenter
       kitty
-	  ghostty
+      ghostty
       grim
       slurp
       playerctl
@@ -52,6 +67,7 @@
       fuzzel
       matugen
       wofi
+      rofi
       imagemagick
       glib
       gsettings-desktop-schemas

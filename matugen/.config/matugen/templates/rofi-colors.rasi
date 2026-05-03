@@ -1,0 +1,5 @@
+* {
+<* for name, value in colors *>
+    {{name | replace(from="_", to="-")}}: {{value.default.hex}};
+<* endfor *>
+}

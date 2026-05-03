@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "colors.css";style.css
 
 *{
     font-family: "Intel One Mono", "Font Awesome 5 Free";
@@ -9,9 +9,16 @@ window#waybar {
 	background-color: alpha(@surface, 0.8);
 }
 
+@keyframes pulse-glow {
+    0%   { color: @primary; }
+    50%  { color: @tertiary; }
+    100% { color: @primary; }
+}
+
 #custom-icon {
 	font-size: 35;
-	color: @primary
+	color: @primary;
+	animation: pulse-glow 3s ease-in-out infinite;
 }
 
 window#waybar.hidden {
