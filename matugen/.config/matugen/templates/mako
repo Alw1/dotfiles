@@ -8,15 +8,15 @@ on-button-right=dismiss-all
 
 # Style options
 font=Intel One Mono 10
-background-color=#0f1417B0
-text-color=#dfe3e7
+background-color={{ colors.surface.default.hex }}B0
+text-color={{ colors.on_surface.default.hex }}
 width=300
 height=100
 margin=10
 padding=15
 border-size=3
 border-radius=5
-border-color=#8fcef3ff
+border-color={{ colors.primary.default.hex }}ff
 icons=1
 max-icon-size=128
 icon-location=left
@@ -30,15 +30,15 @@ anchor=top-right
 
 [category=CHANGE_LAYOUT]
 font=Intel One Mono 25
-background-color=#41484d
-text-color=#c0c7cd
+background-color={{ colors.surface_variant.default.hex }}
+text-color={{ colors.on_surface_variant.default.hex }}
 width=300
 height=100
 margin=300
 padding=15
 border-size=3
 border-radius=5
-border-color=#b5c9d7ff
+border-color={{ colors.secondary.default.hex }}ff
 history=0
 text-alignment=center
 layer=top

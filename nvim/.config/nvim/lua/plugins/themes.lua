@@ -1,5 +1,18 @@
 return {
 
+	-- Matugen wallpaper-adaptive colorscheme
+	{
+		"daedlock/matugen.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("matugen").setup({
+				colors_path = "~/.config/matugen/colors.json",
+			})
+			vim.cmd.colorscheme("matugen")
+		end,
+	},
+
 	-- Themes
 	"rebelot/kanagawa.nvim",
 	"sho-87/kanagawa-paper.nvim",
