@@ -18,6 +18,7 @@ def get_label(class_name: str) -> str:
         'code-oss': 'code',
         'codium': 'VSCode',
         'org.gnome.Nautilus': 'files',
+        'kitty': 'terminal'
     }
     lower = class_name.lower()
     return overrides.get(lower, class_name)

@@ -45,6 +45,23 @@
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
+    systemd.user.services.battery-check = {
+      description = "Battery level check and notification";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "%h/.config/hypr/scripts/battery-check.sh";
+      };
+    };
+
+    systemd.user.timers.battery-check = {
+      description = "Battery level check timer";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "1min";
+        OnUnitActiveSec = "2min";
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       swww
       hyprpolkitagent

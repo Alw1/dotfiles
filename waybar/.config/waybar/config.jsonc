@@ -35,7 +35,6 @@
 		"format": "<span> 󱄅 </span>",
 		"tooltip": false,
 		"align": "center",
-		"on-click": "swaync-client -t"
 	},
 	"hyprland/workspaces": {
 		"disable-scroll": true,
@@ -57,7 +56,6 @@
 	"clock": {
 		"format": "{:%I:%M %p}",
 		"tooltip-format": "{:%A, %B %d, %Y}",
-		"on-click": "swaync-client -t"
 	},
 	"cpu": {
 		"format": "CPU {usage}%",
