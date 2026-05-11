@@ -6,3 +6,5 @@ alias vim="nvim"
 alias nv="nvim"
 alias ogma="~/.local/bin/ogma"
 alias wr="pkill waybar & waybar"
+
+alias llm="ollama launch claude --model llama3.1"

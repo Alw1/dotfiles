@@ -17,11 +17,17 @@ def get_label(class_name: str) -> str:
         'google-chrome': 'chrome',
         'code-oss': 'code',
         'codium': 'VSCode',
-        'org.gnome.Nautilus': 'files',
+        'org.gnome.nautilus': 'files',
         'kitty': 'terminal'
     }
     lower = class_name.lower()
-    return overrides.get(lower, class_name)
+    if lower in overrides:
+        return overrides[lower]
+    # Strip reverse-DNS prefixes like org.gnome.*, com.example.*, etc.
+    parts = class_name.split('.')
+    if len(parts) >= 3 and parts[0].lower() in ('org', 'com', 'io', 'net'):
+        return parts[-1]
+    return class_name
 
 
 def rename_workspace(ws_id: int, name: str):

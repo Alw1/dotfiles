@@ -17,6 +17,13 @@
   gaming.enable = true;
   virtualization.enable = true;
 
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   boot.kernelParams = [
     /*
       These parameters fix issues with linux on
@@ -40,11 +47,19 @@
     ''acpi_osi="Windows 2020"''
     # Disables USB autosuspend to prevent blocked or spurious wakes
     "usbcore.autosuspend=-1"
+    # Explicitly force s2idle sleep state (Meteor Lake has no S3)
+    "mem_sleep_default=s2idle"
+    # Prevents EC from blocking/interfering with wake signals
+    "acpi.ec_no_wakeup=1"
+    # Disables deep display power states that can block resume
+    "i915.enable_dc=0"
+    # Disables panel self-refresh (known cause of resume issues)
+    "i915.enable_psr=0"
   ];
 
   services.ollama = {
     enable = true;
-    package = pkgs.ollama;
+    package = pkgs.unstable.ollama;
     # Optional: preload models, see https://ollama.com/library
     loadModels = [
       "qwen3.6"
