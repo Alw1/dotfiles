@@ -5,16 +5,17 @@
 
   networking.hostName = "zorua";
 
+  GRUB.enable = true;
   hyprland.enable = true;
-  tuigreet.enable = true;
-  gaming.enable = true;
+  ly.enable = true;
+  gaming.enable = true; 
 
   services.hardware.openrgb = {
     enable = true;
     motherboard = "amd";
   };
 
-  xserver = { videoDrivers = [ "amdgpu" ]; };
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   system.stateVersion = "23.11";
 }

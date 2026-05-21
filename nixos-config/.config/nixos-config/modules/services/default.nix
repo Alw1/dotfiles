@@ -1,7 +1,8 @@
 { ... }: {
   imports = [
     ./networking.nix
-	./ly.nix
+    ./ly.nix
+	./tailscale.nix
   ];
 }
 

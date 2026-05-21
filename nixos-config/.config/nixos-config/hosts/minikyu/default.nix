@@ -3,11 +3,12 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules
-    ../../modules/services/tailscale.nix
     ../../users/alex/user.nix
   ];
 
   networking.hostName = "minikyu";
+
+  GRUB.enable = true;
 
   server-settings.enable = true;
 

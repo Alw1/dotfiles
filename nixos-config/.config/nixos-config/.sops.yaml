@@ -1,0 +1,19 @@
+keys:
+  # Your personal age key (for editing secrets from your workstation)
+  # Generate with: age-keygen -o ~/.config/sops/age/keys.txt
+  - &alex age1nnawjmlmugz2nkuthv776nmm5w5rk0qtwjkzz2gtdlgrffnd5vpq4s24qw
+
+  # Per-host age keys derived from SSH host keys
+  # Get each with: nix shell nixpkgs#ssh-to-age --command sh -c 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+  # Or remotely:   nix shell nixpkgs#ssh-to-age --command sh -c 'ssh-keyscan <host> | ssh-to-age'
+  - &zorua age1rppmnp8enkfgvmafqf0l3vcl47yp437p3zpmgpdwqf8w0q6jgexs2h2rzh
+  - &rotom age1nmg39dufjlum8dd6gqhkuryutr95sulqcpq4ksssk888a820yffszm270y
+  # minikyu: add when ready with: nix shell nixpkgs#ssh-to-age --command sh -c 'ssh-keyscan minikyu | ssh-to-age'
+
+creation_rules:
+  - path_regex: secrets/common\.yaml$
+    key_groups:
+      - age:
+          - *alex
+          - *zorua
+          - *rotom

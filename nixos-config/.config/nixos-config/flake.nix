@@ -7,30 +7,21 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-unstable, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nixpkgs-unstable,
+      sops-nix,
+      ...
+    }:
     let
-      system = "x86_64-linux";
-
-      # overlay for unstable packages
-      overlays = [
-        (final: prev: {
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        })
-      ];
-
-      # Common configuration module
-      commonModule = { config, pkgs, ... }: {
-        nixpkgs = {
-          inherit overlays;
-          config.allowUnfree = true;
-        };
-      };
-
       homeManagerModule = {
         home-manager = {
           useGlobalPkgs = true;
@@ -39,27 +30,50 @@
         };
       };
 
-      mkHost = hostPath: extraModules:
+      mkOverlays = system: [
+        (final: prev: {
+          unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        })
+      ];
+
+      mkCommonModule =
+        system:
+        { config, pkgs, ... }:
+        {
+          nixpkgs = {
+            overlays = mkOverlays system;
+            config.allowUnfree = true;
+          };
+        };
+
+      mkHost =
+        system: hostPath: extraModules:
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             hostPath
-            commonModule
+            (mkCommonModule system)
             home-manager.nixosModules.home-manager
             homeManagerModule
-          ] ++ extraModules;
+            sops-nix.nixosModules.sops
+          ]
+          ++ extraModules;
         };
 
-    in {
+    in
+    {
       nixosConfigurations = {
         # PC
-        zorua = mkHost ./hosts/zorua [ ];
+        zorua = mkHost "x86_64-linux" ./hosts/zorua [ ];
 
         # Surface Laptop 6
-        rotom = mkHost ./hosts/rotom [];
+        rotom = mkHost "x86_64-linux" ./hosts/rotom [ ];
 
         # Home server (mini PC)
-        minikyu = mkHost ./hosts/minikyu [];
+        minikyu = mkHost "x86_64-linux" ./hosts/minikyu [ ];
       };
     };
 }

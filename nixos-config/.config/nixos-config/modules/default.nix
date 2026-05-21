@@ -5,6 +5,7 @@
     ./shell
     ./services
 	./hardware
+    ./secrets
   ];
 }
 

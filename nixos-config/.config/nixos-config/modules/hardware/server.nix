@@ -53,7 +53,6 @@
       # MySQL database service
       mysql = {
         enable = true;
-        package = lib.mkDefault pkgs.mysql80;
         initialDatabases = [{ name = "gitea"; }];
         initialScript = pkgs.writeText "gitea-mysql-init" ''
           CREATE USER 'gitea'@'localhost' IDENTIFIED BY 'change-this-password';

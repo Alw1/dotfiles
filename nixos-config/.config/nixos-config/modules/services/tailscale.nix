@@ -1,17 +1,12 @@
-{ config, ... }: {
-  # sops.secrets."tailscale-authkey" = {};
+{ ... }:
+{
+  # sops.secrets."tailscale-authkey" = {
+  #   sopsFile = ../../secrets/common.yaml;
+  # };
 
   services.tailscale = {
     enable = true;
-    openFirewall = true;
     # authKeyFile = config.sops.secrets."tailscale-authkey".path;
-    useRoutingFeatures = "server";
-    extraUpFlags = [ "--advertise-routes=10.0.0.0/8" ];
+    openFirewall = true;
   };
-
-  #   environment.persistence."/nix/persist" = {
-  #     directories = [
-  #       "/var/lib/tailscale"
-  #     ];
-  #   };
 }
