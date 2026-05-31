@@ -10,6 +10,6 @@
       protontricks.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [ melonDS prismlauncher ];
+    environment.systemPackages = with pkgs; [ melonds prismlauncher ];
   };
 }

@@ -63,11 +63,11 @@
     };
 
     environment.systemPackages = with pkgs; [
-      swww
+      awww
       hyprpolkitagent
       wl-clipboard
       libnotify
-      blueberry
+      blueman
       nautilus
       mako
       swaynotificationcenter

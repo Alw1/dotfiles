@@ -35,4 +35,4 @@ wallpaper = run(
     text=True).stdout.strip()
 
 if wallpaper in wallpapers:
-    run(['matugen', 'image', f'{wallpaper_dir}/{wallpapers[wallpaper]}']) 
+    run(['matugen', 'image', f'{wallpaper_dir}/{wallpapers[wallpaper]}', '--source-color-index', '0']) 
