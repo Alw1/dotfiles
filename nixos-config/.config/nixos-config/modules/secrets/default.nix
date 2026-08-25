@@ -1,11 +1,14 @@
-{ lib, config, ... }: {
-  options.secrets.enable = lib.mkEnableOption "sops-nix secrets management";
+{ config, lib, ... }:
+let
+  cfg = config.my.secrets;
+in
+{
+  options.my.secrets.enable = lib.mkEnableOption "sops-nix secrets management";
 
   config = lib.mkMerge [
-    {
-      sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    }
-    (lib.mkIf config.secrets.enable {
+    { sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; }
+
+    (lib.mkIf cfg.enable {
       sops = {
         defaultSopsFile = ../../secrets/common.yaml;
         secrets."ssh-private-key" = {

@@ -1,8 +1,8 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
-    ./networking.nix
+    ./gitea.nix
     ./ly.nix
-	./tailscale.nix
+    ./tailscale.nix
   ];
 }
-

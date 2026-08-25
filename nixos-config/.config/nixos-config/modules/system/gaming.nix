@@ -1,8 +1,16 @@
-{ pkgs, config, lib, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.my.system.gaming;
+in
+{
+  options.my.system.gaming.enable = lib.mkEnableOption "gaming related software";
 
-  options.gaming.enable = lib.mkEnableOption "Enable gaming related software";
-  config = lib.mkIf config.gaming.enable {
-
+  config = lib.mkIf cfg.enable {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -10,6 +18,9 @@
       protontricks.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [ melonds prismlauncher ];
+    environment.systemPackages = with pkgs; [
+      melonds
+      prismlauncher
+    ];
   };
 }

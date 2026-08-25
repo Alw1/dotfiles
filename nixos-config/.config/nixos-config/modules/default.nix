@@ -1,11 +1,12 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
-    ./system
+    ./core
     ./desktop
-    ./shell
+    ./hardware
+    ./packages
     ./services
-	./hardware
+    ./system
     ./secrets
   ];
 }
-

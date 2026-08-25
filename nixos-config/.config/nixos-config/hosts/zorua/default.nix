@@ -1,14 +1,9 @@
-{ ... }: {
-
-  imports =
-    [ ./hardware-configuration.nix ../../modules ../../users/alex/user.nix ];
-
-  networking.hostName = "zorua";
-
-  GRUB.enable = true;
-  hyprland.enable = true;
-  ly.enable = true;
-  gaming.enable = true; 
+{ ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../profiles/workstation.nix
+  ];
 
   services.hardware.openrgb = {
     enable = true;

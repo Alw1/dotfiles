@@ -1,7 +1,8 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
-    ./hyprland.nix
+    ./base.nix
     ./gnome.nix
+    ./hyprland.nix
   ];
 }
-

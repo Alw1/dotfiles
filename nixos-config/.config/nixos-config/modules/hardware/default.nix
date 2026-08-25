@@ -1,7 +1,7 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./laptop.nix
-    ./server.nix
+    ./sdr.nix
   ];
 }
-

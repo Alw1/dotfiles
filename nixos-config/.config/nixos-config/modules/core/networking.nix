@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   networking = {
     networkmanager.enable = true;
@@ -16,10 +15,9 @@
     };
   };
 
-    environment.systemPackages = with pkgs; [
-		openconnect
-		openssl
-		sshfs
-	];
+  environment.systemPackages = with pkgs; [
+    openconnect
+    openssl
+    sshfs
+  ];
 }
-

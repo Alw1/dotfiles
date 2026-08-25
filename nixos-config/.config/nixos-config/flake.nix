@@ -1,8 +1,10 @@
 {
   description = "Alex Wyatt's NixOS Setup";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,66 +16,25 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      nixpkgs-unstable,
-      sops-nix,
-      ...
-    }:
+    inputs@{ nixpkgs, ... }:
     let
-      homeManagerModule = {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.alex = import ./users/alex/home.nix;
-        };
-      };
+      inherit (nixpkgs) lib;
 
-      mkOverlays = system: [
-        (final: prev: {
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        })
-      ];
+      myLib = import ./lib { inherit inputs; };
 
-      mkCommonModule =
-        system:
-        { config, pkgs, ... }:
-        {
-          nixpkgs = {
-            overlays = mkOverlays system;
-            config.allowUnfree = true;
-          };
-        };
-
-      mkHost =
-        system: hostPath: extraModules:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            hostPath
-            (mkCommonModule system)
-            home-manager.nixosModules.home-manager
-            homeManagerModule
-            sops-nix.nixosModules.sops
-          ]
-          ++ extraModules;
-        };
-
+      hosts = lib.attrNames (
+        lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./hosts)
+      );
     in
     {
-      nixosConfigurations = {
-        # PC
-        zorua = mkHost "x86_64-linux" ./hosts/zorua [ ];
+      nixosConfigurations = lib.genAttrs hosts (
+        hostname:
+        myLib.mkHost {
+          inherit hostname;
+          path = ./hosts + "/${hostname}";
+        }
+      );
 
-        # Surface Laptop 6
-        rotom = mkHost "x86_64-linux" ./hosts/rotom [ ];
-
-        # Home server (mini PC)
-        minikyu = mkHost "x86_64-linux" ./hosts/minikyu [ ];
-      };
+      nixosModules.default = ./modules;
     };
 }

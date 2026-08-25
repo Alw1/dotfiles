@@ -1,29 +1,34 @@
-{ pkgs, config, lib, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.my.desktop.gnome;
+in
+{
+  options.my.desktop.gnome.enable = lib.mkEnableOption "GNOME";
 
-  options.GNOME.enable = lib.mkEnableOption "Enable GNOME";
-  config = lib.mkIf config.GNOME.enable {
+  config = lib.mkIf cfg.enable {
+    services.xserver.desktopManager.gnome.enable = true;
 
-    services.xserver = {
-      desktopManager.gnome.enable = true;
-    };
-
-	# Remove random preinstalled apps
-    environment.gnome.excludePackages = (with pkgs; [
-      atomix # puzzle game
-      cheese # webcam tool
-      epiphany # web browser
-      evince # document viewer
-      geary # email reader
-      gedit # text editor
+    environment.gnome.excludePackages = with pkgs; [
+      atomix
+      cheese
+      epiphany
+      evince
+      geary
+      gedit
       gnome-characters
       gnome-music
       gnome-photos
       gnome-terminal
       gnome-tour
-      hitori # sudoku game
-      iagno # go game
-      tali # poker game
-      totem # video player
-    ]);
+      hitori
+      iagno
+      tali
+      totem
+    ];
   };
 }

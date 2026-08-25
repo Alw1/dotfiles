@@ -1,17 +1,17 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+let
+  cfg = config.my.hardware.laptop;
+in
+{
+  options.my.hardware.laptop.enable = lib.mkEnableOption "laptop specific settings";
 
-  options.laptop-settings.enable =
-    lib.mkEnableOption "Laptop specific settings";
-  config = lib.mkIf config.laptop-settings.enable {
-
+  config = lib.mkIf cfg.enable {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = false;
     };
 
     services = {
-
-      # Power saver settings
       power-profiles-daemon.enable = false;
       thermald.enable = true;
       upower.enable = true;
@@ -27,9 +27,7 @@
             turbo = "auto";
           };
         };
-
       };
     };
-
   };
 }

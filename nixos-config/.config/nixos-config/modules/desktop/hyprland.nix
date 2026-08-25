@@ -1,23 +1,23 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }:
+let
+  cfg = config.my.desktop.hyprland;
+in
 {
+  options.my.desktop.hyprland.enable = lib.mkEnableOption "Hyprland";
 
-  options.hyprland.enable = lib.mkEnableOption "Enable Hyprland";
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf cfg.enable {
     programs = {
       hyprland = {
         enable = true;
         xwayland.enable = true;
       };
-
       hyprlock.enable = true;
-
       waybar.enable = true;
-
       dconf.enable = true;
     };
 
@@ -30,14 +30,10 @@
         pkgs.xdg-desktop-portal-hyprland
         pkgs.xdg-desktop-portal-gtk
       ];
-      config = {
-        common = {
-          default = [
-            "hyprland"
-            "gtk"
-          ];
-        };
-      };
+      config.common.default = [
+        "hyprland"
+        "gtk"
+      ];
     };
 
     environment.sessionVariables = {
@@ -64,31 +60,31 @@
 
     environment.systemPackages = with pkgs; [
       awww
-      hyprpolkitagent
-      wl-clipboard
-      libnotify
       blueman
-      nautilus
-      mako
-      swaynotificationcenter
-      kitty
-      ghostty
-      grim
-      slurp
-      playerctl
-      pavucontrol
       brightnessctl
-      networkmanagerapplet
-      papers
       eog
       fuzzel
-      matugen
-      wofi
-      rofi
-      imagemagick
+      ghostty
       glib
+      grim
       gsettings-desktop-schemas
+      hyprpolkitagent
+      imagemagick
+      kitty
+      libnotify
+      mako
+      matugen
+      nautilus
+      networkmanagerapplet
       nwg-look
+      papers
+      pavucontrol
+      playerctl
+      rofi
+      slurp
+      swaynotificationcenter
+      wl-clipboard
+      wofi
     ];
   };
 }

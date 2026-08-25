@@ -1,9 +1,8 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
+    ./boot.nix
     ./gaming.nix
-	./grub.nix
     ./virtualization.nix
-    ./pkgs.nix
   ];
 }
-

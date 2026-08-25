@@ -1,12 +1,14 @@
-{ ... }:
+{ config, lib, ... }:
+let
+  cfg = config.my.services.tailscale;
+in
 {
-  # sops.secrets."tailscale-authkey" = {
-  #   sopsFile = ../../secrets/common.yaml;
-  # };
+  options.my.services.tailscale.enable = lib.mkEnableOption "Tailscale";
 
-  services.tailscale = {
-    enable = true;
-    # authKeyFile = config.sops.secrets."tailscale-authkey".path;
-    openFirewall = true;
+  config = lib.mkIf cfg.enable {
+    services.tailscale = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }

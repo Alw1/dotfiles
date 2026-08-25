@@ -1,32 +1,51 @@
-{ pkgs, lib, config, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.my.system.virtualization;
+in
+{
+  options.my.system.virtualization = {
+    enable = lib.mkEnableOption "virtualization (Docker & virt-manager)";
 
-  options.virtualization.enable =
-    lib.mkEnableOption "Enable Virtualization (Docker & Virt-Manager)";
-  config = lib.mkIf config.virtualization.enable {
+    users = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "Users to add to the libvirtd and docker groups.";
+    };
+  };
 
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      virt-manager
-      virt-viewer
       docker-compose
-      virtiofsd
+      gnome-boxes
       spice
       spice-gtk
       spice-protocol
-	  gnome-boxes
+      virt-manager
+      virt-viewer
+      virtiofsd
     ];
 
-    users.users.alex.extraGroups = [ "libvirtd" "docker" ];
+    users.users = lib.genAttrs cfg.users (_: {
+      extraGroups = [
+        "libvirtd"
+        "docker"
+      ];
+    });
 
     virtualisation = {
       libvirtd = {
         enable = true;
-        qemu = {
-          swtpm.enable = true;
-        };
+        qemu.swtpm.enable = true;
       };
       spiceUSBRedirection.enable = true;
-	  docker.enable = true;
+      docker.enable = true;
     };
+
     services.spice-vdagentd.enable = true;
   };
 }

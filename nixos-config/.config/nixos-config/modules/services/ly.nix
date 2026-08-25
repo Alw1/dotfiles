@@ -1,7 +1,11 @@
-{ lib, config, ... }: {
-  options.ly.enable = lib.mkEnableOption "Enable ly, the display manager";
-  config = lib.mkIf config.ly.enable {
+{ config, lib, ... }:
+let
+  cfg = config.my.services.ly;
+in
+{
+  options.my.services.ly.enable = lib.mkEnableOption "the ly display manager";
 
+  config = lib.mkIf cfg.enable {
     services.displayManager.ly = {
       enable = true;
       settings = {
@@ -11,6 +15,5 @@
         clear_password = true;
       };
     };
-
   };
 }
