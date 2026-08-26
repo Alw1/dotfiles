@@ -54,6 +54,7 @@ in
 
     environment.systemPackages = [
       pkgs.glib
+	  obsidian
     ]
     ++ lib.optionals cfg.extras.enable (
       with pkgs;
