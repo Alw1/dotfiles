@@ -8,9 +8,22 @@ let
   cfg = config.my.desktop.hyprland;
 in
 {
-  options.my.desktop.hyprland.enable = lib.mkEnableOption "Hyprland";
+  options.my.desktop.hyprland = {
+    enable = lib.mkEnableOption "Hyprland";
+
+	# Override monitor settings per host to avoid scaling issues
+    monitors = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ",preferred,auto,auto" ];
+      description = "Hyprland `monitor =` lines, one per entry.";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
+    environment.etc."hypr/monitors.conf".text = lib.concatMapStringsSep "\n" (
+      m: "monitor = ${m}"
+    ) cfg.monitors;
+
     programs = {
       hyprland = {
         enable = true;
