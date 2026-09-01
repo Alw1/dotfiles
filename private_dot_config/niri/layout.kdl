@@ -1,0 +1,44 @@
+// LAYOUT  (from core/appearance.conf)
+
+layout {
+    // hyprland: gaps_in = 5, gaps_out = 5
+    gaps 5
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    // The focus ring is redundant once the border is on.
+    focus-ring {
+        off
+    }
+
+    // hyprland: border_size = 3, col.active_border = $primary $secondary $tertiary 45deg
+    // niri gradients take two stops, so this uses $primary -> $tertiary.
+    border {
+        width 3
+        active-gradient from="#80d4d4" to="#b3c8e9" angle=45
+        inactive-color "#595959aa"
+        urgent-color "#ffb4ab"
+    }
+
+    // hyprland: decoration { shadow { range = 4, color = rgba(1a1a1aee) } }
+    shadow {
+        on
+        softness 15
+        spread 2
+        offset x=0 y=3
+        color "#1a1a1aee"
+    }
+
+    struts {
+        // left 64
+        // right 64
+    }
+}

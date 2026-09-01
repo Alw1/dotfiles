@@ -20,10 +20,7 @@
 
     desktop = {
       enable = true;
-      hyprland = {
-        enable = true;
-        monitors = [ ",preferred,auto,1.6" ];
-      };
+      hyprland.enable = true;
     };
 
     services = {

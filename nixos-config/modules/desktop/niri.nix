@@ -6,39 +6,13 @@
 }:
 let
   cfg = config.my.desktop.niri;
-
-  # Keep multi-line block bodies lined up inside the braces.
-  indent = lib.concatMapStringsSep "\n" (l: lib.optionalString (l != "") "    ${l}");
 in
 {
   options.my.desktop.niri = {
     enable = lib.mkEnableOption "Niri";
-
-    # Override output settings per host to avoid scaling issues
-    outputs = lib.mkOption {
-      type = lib.types.attrsOf lib.types.lines;
-      default = { };
-      example = lib.literalExpression ''
-        {
-          "eDP-1" = '''
-            mode "2256x1504@60"
-            scale 1.6
-          ''';
-        }
-      '';
-      description = "Niri `output` blocks, keyed by output name; the value is the block body.";
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.etc."niri/outputs.kdl".text = lib.concatStrings (
-      lib.mapAttrsToList (name: body: ''
-        output "${name}" {
-        ${indent (lib.splitString "\n" (lib.removeSuffix "\n" body))}
-        }
-      '') cfg.outputs
-    );
-
     programs = {
       niri.enable = true;
       hyprlock.enable = true;
@@ -82,6 +56,7 @@ in
       glib
       grim
       gsettings-desktop-schemas
+      hypridle
       hyprpolkitagent
       imagemagick
       kitty

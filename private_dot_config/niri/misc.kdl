@@ -1,0 +1,12 @@
+// MISC  — small top-level settings that don't warrant a file of their own.
+
+// Ask clients to drop their own decorations, so the border/rounding in
+// layout.kdl is drawn around the window rather than behind it.
+prefer-no-csd
+
+hotkey-overlay {
+    // The cheatsheet still opens on demand with Mod+Shift+/
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

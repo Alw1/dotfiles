@@ -1,0 +1,14 @@
+// niri config, translated from ~/.config/hypr.
+// KDL format: https://kdl.dev  |  Wiki: https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// "/-" comments out the following node.
+//
+// This file is just the table of contents. Each include is resolved relative
+// to this directory, and the pieces are concatenated in the order listed.
+
+include "input.kdl"          // keyboard, touchpad, mouse, cursor
+include "outputs.kdl"        // monitor modes / scale / position
+include "layout.kdl"         // gaps, columns, border, shadow
+include "window-rules.kdl"   // per-app and default window rules
+include "startup.kdl"        // spawn-at-startup, environment
+include "misc.kdl"           // csd, hotkey overlay, screenshots, named workspaces
+include "binds.kdl"          // keybindings
