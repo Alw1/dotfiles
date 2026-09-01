@@ -1,0 +1,10 @@
+# Generated into ~/.config/chezmoi/chezmoi.toml by `chezmoi init`.
+
+# Deploy managed files as symlinks back into this repo, the way GNU stow did.
+# This matters for matugen: it rewrites ~/.config/{waybar,kitty,fuzzel,hypr,mako}
+# theme files on every wallpaper change, and writing through a symlink lands
+# those changes in the repo instead of being reverted by the next `chezmoi apply`.
+mode = "symlink"
+
+# Keep the source of truth at ~/.dotfiles rather than ~/.local/share/chezmoi.
+sourceDir = {{ .chezmoi.sourceDir | quote }}
