@@ -1,0 +1,32 @@
+// WINDOW RULES  (from core/windowrules.conf)
+//
+// Rules apply top to bottom; later matches win.
+
+// Defaults for every window.
+window-rule {
+    open-maximized true
+}
+
+// hyprland: decoration { rounding = 5 }
+window-rule {
+    geometry-corner-radius 5
+    clip-to-geometry true
+}
+
+// hyprland: windowrule kitty-opacity -> opacity 0.9
+window-rule {
+    match app-id=r#"^kitty$"#
+    opacity 0.9
+}
+
+// Float the Firefox picture-in-picture player.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// WezTerm's initial-configure workaround from the stock niri config.
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}

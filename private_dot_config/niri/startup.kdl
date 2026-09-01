@@ -1,0 +1,20 @@
+// STARTUP  (from core/autostart.conf)
+
+spawn-at-startup "waybar"
+spawn-at-startup "hypridle"
+spawn-at-startup "mako"
+spawn-at-startup "nm-applet"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "systemctl" "--user" "start" "hyprpolkitagent"
+
+// `blueberry-tray` is in the hyprland autostart but isn't on PATH right now.
+/-spawn-at-startup "blueberry-tray"
+
+// Dropped: `python3 ~/.config/waybar/hypr-workspace-labels.py`
+// It talks to the Hyprland IPC socket, so it does nothing under niri.
+
+// niri has no built-in XWayland; this provides it for X11 apps.
+spawn-at-startup "xwayland-satellite"
+environment {
+    DISPLAY ":0"
+}

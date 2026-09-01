@@ -1,0 +1,29 @@
+// INPUT  (from core/input.conf)
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        // hyprland: input { sensitivity = 0.5 }
+        accel-speed 0.8
+    }
+
+    // hyprland: follow_mouse = 1
+    focus-follows-mouse
+}
+
+// hyprland: env = HYPRCURSOR_THEME,Adwaita / XCURSOR_SIZE,24
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+}
