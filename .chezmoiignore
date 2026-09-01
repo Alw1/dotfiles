@@ -1,0 +1,16 @@
+# Patterns are TARGET paths (relative to $HOME), not source paths.
+
+# Repo-only files, never deployed
+README.md
+assets
+
+# Payload directories. These are deployed as stow-style *directory* symlinks
+# via private_dot_config/symlink_nixos-config.tmpl and Pictures/symlink_Wallpapers.tmpl,
+# so chezmoi must not also try to manage them file-by-file at ~/nixos-config
+# and ~/wallpapers.
+nixos-config
+wallpapers
+
+# Runtime state written by the wallpaper tooling; must stay unmanaged so it
+# is never reverted or committed. Was a dangling symlink when migrating.
+.config/hypr/current_wallpaper

@@ -1,0 +1,118 @@
+{
+	"position": "top",
+	"spacing": 5,
+	// Both workspace modules are listed; whichever compositor isn't running
+	// simply fails to initialize its module and is skipped.
+	"modules-left": [
+		"custom/icon",
+		"hyprland/workspaces",
+		"niri/workspaces"
+	],
+	"modules-center": [],
+	"modules-right": [
+		"tray",
+		"cpu",
+		"memory",
+		"network",
+		"pulseaudio",
+		"idle_inhibitor",
+		"battery",
+		"clock"
+	],
+	"network": {
+		"format-wifi": "{signalStrength}%  ",
+		"format-alt": "{essid}  ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{essid}",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠"
+	},
+	"custom/hypr-workspaces": {
+		"format": "{}",
+		"exec": "~/.config/waybar/hypr-workspaces.sh",
+		"restart-interval": 1,
+		"return-type": "pango",
+		"on-click": "hyprctl dispatch workspace {}"
+	},
+	"custom/icon": {
+		"format": "<span> 󱄅 </span>",
+		"tooltip": false,
+		"align": "center",
+		"on-click" : "toggle-overview"
+	},
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}"
+	},
+	"niri/workspaces": {
+		"all-outputs": false,
+		"format": "{value}"
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"tray": {
+		"show-passive-items": true,
+		"icon-size": 20,
+		"spacing": 10
+	},
+	"clock": {
+		"format": "{:%I:%M %p}",
+		"tooltip-format": "{:%A, %B %d, %Y}",
+	},
+	"cpu": {
+		"format": "CPU {usage}%",
+		"interval": 10,
+		"tooltip": false
+	},
+	"memory": {
+		"interval": 10,
+		"format": "RAM {percentage}%"
+	},
+	"battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% 󱐋",
+		"format-plugged": "{capacity}% ",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"interval": 10
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon}",
+		"format-muted": "MUTED ",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-bluetooth-muted": "MUTED ",
+		"format-source": "{volume}% ",
+		"format-source-muted": "MUTED ",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol",
+		"max-volume": 100
+	}
+}

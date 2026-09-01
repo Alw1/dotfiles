@@ -1,0 +1,9 @@
+# runtime state written by the wallpaper tooling, not config
+private_dot_config/hypr/current_wallpaper
+
+# python bytecode
+__pycache__/
+*.pyc
+
+# local agent settings
+.claude/
