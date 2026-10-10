@@ -37,10 +37,10 @@
     "usbcore.autosuspend=-1"
   ];
 
-  services.ollama = {
+  my.ai.llm = {
     enable = true;
-    package = pkgs.unstable.ollama;
-    loadModels = [
+    models = [
+      "qwen3.8:27b"
       "qwen3-coder:30b"
     ];
   };

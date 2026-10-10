@@ -14,6 +14,7 @@
     git
     gotop
     hyfetch
+    pi-coding-agent
     pokeget-rs
     python3
     ripgrep

@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./ai
     ./core
     ./desktop
     ./hardware
