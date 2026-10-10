@@ -18,6 +18,7 @@
     python3
     python312Packages.pip
     ripgrep
+    stow
     tmux
     tree
     unzip
@@ -26,6 +27,5 @@
     xz
     yazi
     zip
-	chezmoi
   ];
 }
