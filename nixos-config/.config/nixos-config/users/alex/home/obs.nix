@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-lib.mkIf osConfig.my.desktop.enable {
+lib.mkIf osConfig.my.desktop.obs.enable {
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [

@@ -16,7 +16,6 @@
     hyfetch
     pokeget-rs
     python3
-    python312Packages.pip
     ripgrep
     stow
     tmux

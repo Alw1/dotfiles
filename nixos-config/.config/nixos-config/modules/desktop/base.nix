@@ -10,7 +10,8 @@ in
 {
   options.my.desktop = {
     enable = lib.mkEnableOption "graphical desktop support";
-    extras.enable = lib.mkEnableOption "large optional desktop apps and the full Nerd Fonts set";
+    extras.enable = lib.mkEnableOption "large optional desktop apps";
+    obs.enable = lib.mkEnableOption "OBS Studio and its plugins (~2 GiB, pulls CEF)";
   };
 
   config = lib.mkIf cfg.enable {
@@ -38,25 +39,21 @@ in
 
     programs.firefox.enable = true;
 
+    # Every config here asks for Intel One Mono (kitty, waybar, fuzzel) with
+    # Font Awesome for waybar's icons; symbols-only supplies the patched glyphs
+    # as a fallback. Whole Nerd Fonts families are ~250 MiB-1 GiB each, so they
+    # are deliberately not installed.
     fonts.packages = [
       pkgs.intel-one-mono
-      pkgs.jetbrains-mono
       pkgs.font-awesome
-      pkgs.monaspace
-      # Waybar and the shell configs need the patched glyphs; the rest of the
-      # Nerd Fonts collection is several GB and comes with `extras`.
-      pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
-    ]
-    ++ lib.optionals cfg.extras.enable (
-      builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts)
-    );
+    ];
 
+    # openconnect comes from core/networking.nix, which every host imports.
     environment.systemPackages = [
       pkgs.glib
-	  pkgs.obsidian
-	  pkgs.openconnect
-	  pkgs.mediawriter
+      pkgs.obsidian
+      pkgs.mediawriter
     ]
     ++ lib.optionals cfg.extras.enable (
       with pkgs;

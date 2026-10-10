@@ -8,8 +8,9 @@
     desktop = {
       enable = true;
       extras.enable = true;
+      obs.enable = true;
       hyprland.enable = true;
-	  niri.enable = true;
+      niri.enable = true;
     };
 
     services = {

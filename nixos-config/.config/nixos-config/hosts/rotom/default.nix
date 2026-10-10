@@ -41,11 +41,11 @@
     enable = true;
     package = pkgs.unstable.ollama;
     loadModels = [
-	  "qwen3-coder:30b"
+      "qwen3-coder:30b"
     ];
   };
 
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     touchpad.disableWhileTyping = false;
   };

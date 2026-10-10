@@ -46,14 +46,16 @@ in
       };
     };
 
+    # Matches the Hyprland list: fuzzel, mako and kitty are what startup.kdl
+    # and binds.kdl actually spawn. hypridle is the package rather than the
+    # service because niri spawns it itself; swayidle was a second, unused idle
+    # daemon alongside it.
     environment.systemPackages = with pkgs; [
       awww
       blueman
       brightnessctl
       eog
       fuzzel
-      ghostty
-      glib
       grim
       gsettings-desktop-schemas
       hypridle
@@ -69,12 +71,8 @@ in
       papers
       pavucontrol
       playerctl
-      rofi
       slurp
-      swayidle
-      swaynotificationcenter
       wl-clipboard
-      wofi
       xwayland-satellite
     ];
   };

@@ -18,9 +18,7 @@
 
       myLib = import ./lib { inherit inputs; };
 
-      hosts = lib.attrNames (
-        lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./hosts)
-      );
+      hosts = lib.attrNames (lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./hosts));
     in
     {
       nixosConfigurations = lib.genAttrs hosts (

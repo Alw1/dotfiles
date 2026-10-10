@@ -60,14 +60,15 @@ in
       };
     };
 
+    # The session spawns fuzzel as the launcher, mako as the notification
+    # daemon and kitty as the terminal (see hypr/core/{variables,autostart}.conf);
+    # rofi, wofi, swaynotificationcenter and ghostty were never wired up.
     environment.systemPackages = with pkgs; [
       awww
       blueman
       brightnessctl
       eog
       fuzzel
-      ghostty
-      glib
       grim
       gsettings-desktop-schemas
       hyprpolkitagent
@@ -82,11 +83,8 @@ in
       papers
       pavucontrol
       playerctl
-      rofi
       slurp
-      swaynotificationcenter
       wl-clipboard
-      wofi
     ];
   };
 }
