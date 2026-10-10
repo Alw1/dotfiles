@@ -31,15 +31,11 @@ symlinks (stow folding), so new files there are picked up automatically.
 
 ## Monitors
 
-The hypr config is shared by every host, so `monitor =` lines are not in it.
-Each host declares its own in `nixos-config/.config/nixos-config/hosts/<host>/default.nix`:
-
-```nix
-my.desktop.hyprland.monitors = [ "eDP-1,2256x1504@60,0x0,auto" ];
-```
-
-That is rendered to `/etc/hypr/monitors.conf`, which `hyprland.conf` sources.
-Changing it needs a rebuild.
+Monitor/output setup lives in the WM configs, not in Nix: Hyprland takes
+`monitor = ,preferred,auto,auto` from `hypr/.config/hypr/core/variables.conf`
+and niri auto-detects, with per-output overrides commented out in
+`niri/.config/niri/outputs.kdl` (`niri msg outputs` lists the names). No
+rebuild needed to change either.
 
 ## Screenshots
 
