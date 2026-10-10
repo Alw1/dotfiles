@@ -11,7 +11,7 @@ Setup instructions for use on NixOS
 nix-shell -p stow git
 git clone git@github.com/Alw1/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-stow --adopt --ignore='\.claude' */
+stow --adopt */
 
 cd ~/.config/nixos-config
 # Make sure to add host directory in the nixos-config folder before building,
@@ -27,15 +27,7 @@ Add a new file by putting it at the matching path inside its package and
 re-running `stow <package>`.
 
 `~/.config/nixos-config` and `~/Pictures/Wallpapers` are whole-directory
-symlinks (stow folding), so new files there are picked up automatically.
-
-## Monitors
-
-Monitor/output setup lives in the WM configs, not in Nix: Hyprland takes
-`monitor = ,preferred,auto,auto` from `hypr/.config/hypr/core/variables.conf`
-and niri auto-detects, with per-output overrides commented out in
-`niri/.config/niri/outputs.kdl` (`niri msg outputs` lists the names). No
-rebuild needed to change either.
+symlinks, so new files there are picked up automatically.
 
 ## Screenshots
 
